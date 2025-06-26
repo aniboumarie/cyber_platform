@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% block title %}Incident Response & Forensics - CyberGuard Training{% endblock %}
+
+{% block content %}
+<style>
+  .course-detail-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .course-header h1 {
+    color: #003366; /* Dark Blue */
+    margin-bottom: 10px;
+    font-size: 2.5em;
+  }
+  .course-header .subtitle {
+    font-size: 1.3em;
+    color: #555;
+    margin-bottom: 30px;
+  }
+  .course-section {
+    margin-bottom: 30px;
+  }
+  .course-section h2 {
+    color: #00509e; /* Medium Blue */
+    border-bottom: 2px solid #00509e;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+  }
+  .course-section ul {
+    list-style: disc;
+    margin-left: 20px;
+    padding-left: 0;
+  }
+  .course-section ul li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+  .course-section p {
+    line-height: 1.7;
+    color: #444;
+  }
+  .btn-enroll {
+    background-color: #ff6600; /* Bright Orange */
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  .btn-enroll:hover {
+    background-color: #cc5200; /* Darker Orange */
+    color: white;
+  }
+</style>
+
+<div class="container course-detail-container">
+  <div class="course-header">
+    <h1>Incident Response & Digital Forensics</h1>
+    <p class="subtitle">Effectively manage security incidents and uncover digital evidence like an expert.</p>
+  </div>
+
+  <div class="course-section description">
+    <h2>Course Overview</h2>
+    <p>This course equips you with the critical skills needed to prepare for, respond to, and recover from cybersecurity incidents. You will also delve into the fundamentals of digital forensics, learning how to collect, preserve, analyze, and present digital evidence in a legally sound manner. We cover the entire incident response lifecycle and forensic investigation process, from initial detection to post-incident analysis and reporting.</p>
+    <p>Through practical scenarios and hands-on exercises, you'll gain experience with industry-standard tools and techniques used by incident response teams and forensic investigators.</p>
+  </div>
+
+  <div class="course-section objectives">
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Understand the phases of the incident response lifecycle (Preparation, Identification, Containment, Eradication, Recovery, Lessons Learned).</li>
+      <li>Develop and implement effective incident response plans and playbooks.</li>
+      <li>Master techniques for identifying, containing, and eradicating security threats.</li>
+      <li>Learn the principles of digital forensics, including evidence handling and chain of custody.</li>
+      <li>Perform forensic analysis on operating systems (Windows, Linux), networks, and mobile devices.</li>
+      <li>Utilize common forensic tools for data acquisition, analysis, and reporting.</li>
+    </ul>
+  </div>
+
+  <div class="course-section audience">
+    <h2>Who Is This Course For?</h2>
+    <p>Aspiring incident responders, digital forensic analysts, cybersecurity managers, IT professionals, law enforcement personnel, and legal professionals seeking to understand incident handling and digital evidence.</p>
+  </div>
+
+  <div class="course-section prerequisites">
+    <h2>Prerequisites</h2>
+    <p>A good understanding of operating systems, networking concepts, and general cybersecurity principles is required. Familiarity with command-line tools and basic IT troubleshooting will be beneficial.</p>
+  </div>
+
+  <div class="course-section duration">
+    <h2>Estimated Duration</h2>
+    <p>Approximately 40-45 hours of study, combining theoretical knowledge with practical lab work focused on incident scenarios and forensic investigations.</p>
+  </div>
+
+  <div class="course-section key-topics">
+    <h2>Key Topics Covered</h2>
+    <ul>
+      <li>Introduction to Incident Response and Handling</li>
+      <li>Developing an Incident Response Plan and Team</li>
+      <li>Incident Detection, Triage, and Prioritization</li>
+      <li>Containment, Eradication, and Recovery Strategies</li>
+      <li>Post-Incident Activities and Lessons Learned</li>
+      <li>Fundamentals of Digital Forensics and Evidence Handling</li>
+      <li>Operating System Forensics (Windows, Linux)</li>
+      <li>Network Forensics and Traffic Analysis</li>
+      <li>Malware Analysis in Incident Response</li>
+      <li>Forensic Reporting and Expert Witness Testimony Basics</li>
+    </ul>
+  </div>
+
+  <div class="text-center">
+    <a href="#" class="btn btn-enroll">Master Incident Response</a>
+  </div>
+</div>
+{% endblock %}

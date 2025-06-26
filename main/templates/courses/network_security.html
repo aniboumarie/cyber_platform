@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block title %}Network Security Fundamentals - CyberGuard Training{% endblock %}
+
+{% block content %}
+<style>
+  .course-detail-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .course-header h1 {
+    color: #003366; /* Dark Blue */
+    margin-bottom: 10px;
+    font-size: 2.5em;
+  }
+  .course-header .subtitle {
+    font-size: 1.3em;
+    color: #555;
+    margin-bottom: 30px;
+  }
+  .course-section {
+    margin-bottom: 30px;
+  }
+  .course-section h2 {
+    color: #00509e; /* Medium Blue */
+    border-bottom: 2px solid #00509e;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+  }
+  .course-section ul {
+    list-style: disc;
+    margin-left: 20px;
+    padding-left: 0;
+  }
+  .course-section ul li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+  .course-section p {
+    line-height: 1.7;
+    color: #444;
+  }
+  .btn-enroll {
+    background-color: #ff6600; /* Bright Orange */
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  .btn-enroll:hover {
+    background-color: #cc5200; /* Darker Orange */
+    color: white;
+  }
+</style>
+
+<div class="container course-detail-container">
+  <div class="course-header">
+    <h1>Network Security Fundamentals</h1>
+    <p class="subtitle">Your first step towards mastering network defense and building resilient digital fortresses.</p>
+  </div>
+
+  <div class="course-section description">
+    <h2>Course Overview</h2>
+    <p>This comprehensive course provides a robust foundation in network security principles, practices, and technologies. You'll explore common threats, vulnerabilities, and the mechanisms to protect network infrastructures effectively. From understanding basic protocols to implementing advanced security measures, this course is designed to equip you with the essential knowledge to safeguard digital assets.</p>
+    <p>We delve into real-world scenarios and provide practical insights that you can apply immediately in your professional role or personal projects. Get ready to transform your understanding of network security.</p>
+  </div>
+
+  <div class="course-section objectives">
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Understand core network security concepts, terminology, and the CIA triad (Confidentiality, Integrity, Availability).</li>
+      <li>Identify common network attack vectors, vulnerabilities, and mitigation techniques.</li>
+      <li>Learn to configure, manage, and monitor firewalls and intrusion detection/prevention systems (IDS/IPS).</li>
+      <li>Grasp the fundamentals of VPNs, secure network design principles, and network segmentation.</li>
+      <li>Develop a proactive security mindset essential for modern network administration and cybersecurity roles.</li>
+    </ul>
+  </div>
+
+  <div class="course-section audience">
+    <h2>Who Is This Course For?</h2>
+    <p>Aspiring cybersecurity professionals, network administrators, IT managers, system engineers, and anyone interested in gaining a solid understanding of network defense mechanisms and security best practices.</p>
+  </div>
+
+  <div class="course-section prerequisites">
+    <h2>Prerequisites</h2>
+    <p>A basic understanding of computer networking concepts (e.g., TCP/IP, OSI model, IP addressing) is recommended. No prior security experience is strictly required, but a familiarity with IT fundamentals will be beneficial.</p>
+  </div>
+
+  <div class="course-section duration">
+    <h2>Estimated Duration</h2>
+    <p>Approximately 30-35 hours of study, including video lectures, reading materials, and hands-on lab exercises (where applicable). Self-paced learning allows you to progress at your own speed.</p>
+  </div>
+
+  <div class="course-section key-topics">
+    <h2>Key Topics Covered</h2>
+    <ul>
+      <li>Introduction to Network Security & Cyber Threats</li>
+      <li>Essential Networking Protocols and Associated Vulnerabilities</li>
+      <li>Firewall Technologies and Network Segmentation Strategies</li>
+      <li>Intrusion Detection and Prevention Systems (IDS/IPS)</li>
+      <li>Virtual Private Networks (VPNs) and Remote Access Security</li>
+      <li>Wireless Network Security (WPA2/3, common attacks, best practices)</li>
+      <li>Network Monitoring, Logging, and Traffic Analysis</li>
+      <li>Fundamentals of Cryptography in Network Security</li>
+      <li>Secure Network Architecture and Design Principles</li>
+    </ul>
+  </div>
+
+  <div class="text-center">
+    <a href="#" class="btn btn-enroll">Start Learning Now</a>
+  </div>
+</div>
+{% endblock %}

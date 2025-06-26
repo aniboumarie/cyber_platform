@@ -181,3 +181,16 @@ def some_view(request):
     # your logic here (e.g., saving data, logging in, etc.)
     messages.success(request, "User role updated successfully!")
     return redirect('some-page')  # or render(...)
+
+# Course Detail Page Views
+def network_security_view(request):
+    return render(request, 'courses/network_security.html')
+
+def ethical_hacking_view(request):
+    return render(request, 'courses/ethical_hacking.html')
+
+def cloud_security_view(request):
+    return render(request, 'courses/cloud_security.html')
+
+def incident_response_view(request):
+    return render(request, 'courses/incident_response.html')

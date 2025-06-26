@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}Cloud Security Essentials - CyberGuard Training{% endblock %}
+
+{% block content %}
+<style>
+  .course-detail-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  .course-header h1 {
+    color: #003366; /* Dark Blue */
+    margin-bottom: 10px;
+    font-size: 2.5em;
+  }
+  .course-header .subtitle {
+    font-size: 1.3em;
+    color: #555;
+    margin-bottom: 30px;
+  }
+  .course-section {
+    margin-bottom: 30px;
+  }
+  .course-section h2 {
+    color: #00509e; /* Medium Blue */
+    border-bottom: 2px solid #00509e;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+  }
+  .course-section ul {
+    list-style: disc;
+    margin-left: 20px;
+    padding-left: 0;
+  }
+  .course-section ul li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+  }
+  .course-section p {
+    line-height: 1.7;
+    color: #444;
+  }
+  .btn-enroll {
+    background-color: #ff6600; /* Bright Orange */
+    color: white;
+    padding: 12px 25px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  .btn-enroll:hover {
+    background-color: #cc5200; /* Darker Orange */
+    color: white;
+  }
+</style>
+
+<div class="container course-detail-container">
+  <div class="course-header">
+    <h1>Cloud Security Essentials</h1>
+    <p class="subtitle">Secure your assets and navigate the complexities of cloud environments with confidence.</p>
+  </div>
+
+  <div class="course-section description">
+    <h2>Course Overview</h2>
+    <p>As organizations increasingly migrate to the cloud, understanding how to secure these environments is paramount. This course provides essential knowledge and skills to protect data, applications, and infrastructure in cloud platforms like AWS, Azure, and GCP. We cover fundamental cloud concepts, security challenges, and best practices for designing and maintaining secure cloud solutions.</p>
+    <p>You'll learn about identity and access management, data protection strategies, network security in the cloud, and compliance considerations. This course is vendor-neutral in its principles but provides examples across major cloud providers.</p>
+  </div>
+
+  <div class="course-section objectives">
+    <h2>Learning Objectives</h2>
+    <ul>
+      <li>Understand core cloud computing concepts (IaaS, PaaS, SaaS) and their security implications.</li>
+      <li>Identify common cloud security threats, risks, and vulnerabilities.</li>
+      <li>Implement robust Identity and Access Management (IAM) solutions in cloud environments.</li>
+      <li>Learn best practices for data encryption, key management, and data loss prevention (DLP) in the cloud.</li>
+      <li>Configure and manage cloud network security controls (e.g., security groups, network ACLs, WAFs).</li>
+      <li>Understand compliance frameworks (e.g., GDPR, HIPAA, SOC 2) relevant to cloud security.</li>
+    </ul>
+  </div>
+
+  <div class="course-section audience">
+    <h2>Who Is This Course For?</h2>
+    <p>IT professionals, security engineers, cloud architects, system administrators, and anyone involved in deploying or managing resources in cloud environments. Also beneficial for those preparing for cloud security certifications.</p>
+  </div>
+
+  <div class="course-section prerequisites">
+    <h2>Prerequisites</h2>
+    <p>Basic understanding of IT, networking, and general security concepts. Familiarity with at least one major cloud provider (AWS, Azure, or GCP) is helpful but not mandatory. </p>
+  </div>
+
+  <div class="course-section duration">
+    <h2>Estimated Duration</h2>
+    <p>Approximately 35-40 hours of study, including theoretical lessons, practical demonstrations, and case studies focusing on real-world cloud security challenges.</p>
+  </div>
+
+  <div class="course-section key-topics">
+    <h2>Key Topics Covered</h2>
+    <ul>
+      <li>Introduction to Cloud Computing and Security Models (Shared Responsibility)</li>
+      <li>Identity and Access Management (IAM) - Users, Roles, Policies</li>
+      <li>Cloud Data Security - Encryption, Key Management, Data Masking</li>
+      <li>Cloud Network Security - Virtual Networks, Security Groups, WAFs</li>
+      <li>Infrastructure Security in IaaS, PaaS, and SaaS</li>
+      <li>Security Operations and Monitoring in the Cloud (Logging, Auditing)</li>
+      <li>Compliance and Legal Considerations in Cloud Environments</li>
+      <li>DevSecOps Principles for Secure Cloud Application Development</li>
+      <li>Incident Response and Business Continuity in the Cloud</li>
+    </ul>
+  </div>
+
+  <div class="text-center">
+    <a href="#" class="btn btn-enroll">Secure Your Cloud Journey</a>
+  </div>
+</div>
+{% endblock %}
