@@ -61,6 +61,33 @@
     background-color: #cc5200; /* Darker Orange */
     color: white;
   }
+
+  /* Key Topics Grid Styling */
+  .key-topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; /* Space between cards */
+    margin-top: 20px;
+  }
+  .topic-card {
+    background-color: #f8f9fa; /* Light grey background for cards */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0; /* Subtle border */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07); /* Soft shadow */
+    text-align: left;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  .topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+  }
+  .topic-card h4 {
+    color: #003366; /* Dark Blue for topic titles */
+    font-size: 1.15em; /* Slightly larger for emphasis */
+    margin-bottom: 0; /* Remove bottom margin if only title */
+    line-height: 1.4;
+  }
 </style>
 
 <div class="container course-detail-container">
@@ -104,18 +131,18 @@
 
   <div class="course-section key-topics">
     <h2>Key Topics Covered</h2>
-    <ul>
-      <li>Introduction to Ethical Hacking and Legal Frameworks</li>
-      <li>Footprinting, Reconnaissance, and Information Gathering</li>
-      <li>Scanning Networks and Enumeration Techniques</li>
-      <li>Vulnerability Analysis and Assessment</li>
-      <li>System Hacking (Malware, Password Attacks, Privilege Escalation)</li>
-      <li>Web Application Hacking (SQL Injection, XSS, CSRF)</li>
-      <li>Wireless Network Penetration Testing</li>
-      <li>Social Engineering Tactics and Countermeasures</li>
-      <li>Evading IDS, Firewalls, and Honeypots</li>
-      <li>Reporting and Post-Engagement Activities</li>
-    </ul>
+    <div class="key-topics-grid">
+      <div class="topic-card"><h4>Introduction to Ethical Hacking and Legal Frameworks</h4></div>
+      <div class="topic-card"><h4>Footprinting, Reconnaissance, and Information Gathering</h4></div>
+      <div class="topic-card"><h4>Scanning Networks and Enumeration Techniques</h4></div>
+      <div class="topic-card"><h4>Vulnerability Analysis and Assessment</h4></div>
+      <div class="topic-card"><h4>System Hacking (Malware, Password Attacks, Privilege Escalation)</h4></div>
+      <div class="topic-card"><h4>Web Application Hacking (SQL Injection, XSS, CSRF)</h4></div>
+      <div class="topic-card"><h4>Wireless Network Penetration Testing</h4></div>
+      <div class="topic-card"><h4>Social Engineering Tactics and Countermeasures</h4></div>
+      <div class="topic-card"><h4>Evading IDS, Firewalls, and Honeypots</h4></div>
+      <div class="topic-card"><h4>Reporting and Post-Engagement Activities</h4></div>
+    </div>
   </div>
 
   <div class="text-center">

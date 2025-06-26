@@ -61,6 +61,33 @@
     background-color: #cc5200; /* Darker Orange */
     color: white;
   }
+
+  /* Key Topics Grid Styling */
+  .key-topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; /* Space between cards */
+    margin-top: 20px;
+  }
+  .topic-card {
+    background-color: #f8f9fa; /* Light grey background for cards */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0; /* Subtle border */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07); /* Soft shadow */
+    text-align: left;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  .topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+  }
+  .topic-card h4 {
+    color: #003366; /* Dark Blue for topic titles */
+    font-size: 1.15em; /* Slightly larger for emphasis */
+    margin-bottom: 0; /* Remove bottom margin if only title */
+    line-height: 1.4;
+  }
 </style>
 
 <div class="container course-detail-container">
@@ -104,17 +131,17 @@
 
   <div class="course-section key-topics">
     <h2>Key Topics Covered</h2>
-    <ul>
-      <li>Introduction to Cloud Computing and Security Models (Shared Responsibility)</li>
-      <li>Identity and Access Management (IAM) - Users, Roles, Policies</li>
-      <li>Cloud Data Security - Encryption, Key Management, Data Masking</li>
-      <li>Cloud Network Security - Virtual Networks, Security Groups, WAFs</li>
-      <li>Infrastructure Security in IaaS, PaaS, and SaaS</li>
-      <li>Security Operations and Monitoring in the Cloud (Logging, Auditing)</li>
-      <li>Compliance and Legal Considerations in Cloud Environments</li>
-      <li>DevSecOps Principles for Secure Cloud Application Development</li>
-      <li>Incident Response and Business Continuity in the Cloud</li>
-    </ul>
+    <div class="key-topics-grid">
+      <div class="topic-card"><h4>Introduction to Cloud Computing and Security Models (Shared Responsibility)</h4></div>
+      <div class="topic-card"><h4>Identity and Access Management (IAM) - Users, Roles, Policies</h4></div>
+      <div class="topic-card"><h4>Cloud Data Security - Encryption, Key Management, Data Masking</h4></div>
+      <div class="topic-card"><h4>Cloud Network Security - Virtual Networks, Security Groups, WAFs</h4></div>
+      <div class="topic-card"><h4>Infrastructure Security in IaaS, PaaS, and SaaS</h4></div>
+      <div class="topic-card"><h4>Security Operations and Monitoring in the Cloud (Logging, Auditing)</h4></div>
+      <div class="topic-card"><h4>Compliance and Legal Considerations in Cloud Environments</h4></div>
+      <div class="topic-card"><h4>DevSecOps Principles for Secure Cloud Application Development</h4></div>
+      <div class="topic-card"><h4>Incident Response and Business Continuity in the Cloud</h4></div>
+    </div>
   </div>
 
   <div class="text-center">

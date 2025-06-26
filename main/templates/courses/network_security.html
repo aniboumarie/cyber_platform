@@ -61,6 +61,35 @@
     background-color: #cc5200; /* Darker Orange */
     color: white;
   }
+
+  /* Key Topics Grid Styling */
+  .key-topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px; /* Space between cards */
+    margin-top: 20px;
+  }
+  .topic-card {
+    background-color: #f8f9fa; /* Light grey background for cards */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0; /* Subtle border */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07); /* Soft shadow */
+    text-align: left;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  .topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+  }
+  .topic-card h4 {
+    color: #003366; /* Dark Blue for topic titles */
+    font-size: 1.15em; /* Slightly larger for emphasis */
+    margin-bottom: 0; /* Remove bottom margin if only title */
+    line-height: 1.4;
+  }
+  /* If you add icons or short descriptions later, adjust h4 margin and add styles for them */
+
 </style>
 
 <div class="container course-detail-container">
@@ -103,17 +132,17 @@
 
   <div class="course-section key-topics">
     <h2>Key Topics Covered</h2>
-    <ul>
-      <li>Introduction to Network Security & Cyber Threats</li>
-      <li>Essential Networking Protocols and Associated Vulnerabilities</li>
-      <li>Firewall Technologies and Network Segmentation Strategies</li>
-      <li>Intrusion Detection and Prevention Systems (IDS/IPS)</li>
-      <li>Virtual Private Networks (VPNs) and Remote Access Security</li>
-      <li>Wireless Network Security (WPA2/3, common attacks, best practices)</li>
-      <li>Network Monitoring, Logging, and Traffic Analysis</li>
-      <li>Fundamentals of Cryptography in Network Security</li>
-      <li>Secure Network Architecture and Design Principles</li>
-    </ul>
+    <div class="key-topics-grid">
+      <div class="topic-card"><h4>Introduction to Network Security & Cyber Threats</h4></div>
+      <div class="topic-card"><h4>Essential Networking Protocols and Associated Vulnerabilities</h4></div>
+      <div class="topic-card"><h4>Firewall Technologies and Network Segmentation Strategies</h4></div>
+      <div class="topic-card"><h4>Intrusion Detection and Prevention Systems (IDS/IPS)</h4></div>
+      <div class="topic-card"><h4>Virtual Private Networks (VPNs) and Remote Access Security</h4></div>
+      <div class="topic-card"><h4>Wireless Network Security (WPA2/3, common attacks, best practices)</h4></div>
+      <div class="topic-card"><h4>Network Monitoring, Logging, and Traffic Analysis</h4></div>
+      <div class="topic-card"><h4>Fundamentals of Cryptography in Network Security</h4></div>
+      <div class="topic-card"><h4>Secure Network Architecture and Design Principles</h4></div>
+    </div>
   </div>
 
   <div class="text-center">
