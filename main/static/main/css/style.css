@@ -1,194 +1,259 @@
 /* Table of Contents
-1. Global / Body Styles
+1. Global / Body Styles & Base Typography
 2. Navbar (.navbar-custom)
-3. Buttons (General: .btn, .btn-enroll, .btn-submit, .btn-view-details, .btn-back-link)
+3. Buttons (General & CTA, Secondary)
 4. Forms (.container-auth, .form-group, .errorlist)
-5. Homepage Specific (.hero, .section, .features-grid, .courses-grid, .course-item, .cta-section, footer)
-6. Course Catalog Specific (.catalog-container, .catalog-header, .course-grid, .course-card-catalog)
-7. Course Detail Pages Specific (.course-detail-container, .course-header, .course-section, .key-topics-grid, .topic-card, .topic-detail-content, .topic-toggle-icon)
+5. Page Wrappers & Layout (.auth-page, .container - general purpose)
+6. Homepage Specific (.hero, .section, .features-grid, .courses-grid, .course-item, .cta-section, footer)
+7. Course Catalog Specific (.catalog-container, .catalog-header, .course-card-catalog)
+8. Course Detail Pages Specific (.course-detail-container, .course-header, .course-section, .key-topics-grid, .topic-card, .topic-detail-content, .topic-toggle-icon)
+9. Utility Classes
 */
 
-/* 1. Global / Body Styles */
+/* 1. Global / Body Styles & Base Typography */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.65;
+    color: #212121;
+    background-color: #F5F7FA;
     margin: 0;
-    padding: 0; /* Base.html had padding-top:0, home.html had padding:0. This is a reset. Auth pages add their own body bg and padding. */
-    /* background-color: #f4f4f4; /* Consider if this should be global or only for auth/form pages */
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-.container { /* From home.html, might be too general, used by Bootstrap too. Scope if needed. */
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    padding: 0 20px; /* This might conflict with Bootstrap's .container. Consider renaming or careful usage. */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: #0D47A1; /* Primary Blue for headings */
+    margin-top: 0;
+    line-height: 1.3;
+    font-weight: 600; /* Default bold for headings */
 }
 
-.alert { /* From base.html */
-    margin-top: 1rem;
+h1 { /* Approx 40px if base is 16px */
+    font-size: 2.5rem;
+    font-weight: 700; /* Extra bold for H1 */
+    margin-bottom: 24px; /* 3 * 8px */
 }
 
-/* 2. Navbar (.navbar-custom) - From base.html */
+h2 { /* Approx 32px */
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 24px; /* 3 * 8px */
+}
+
+h3 { /* Approx 28px */
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 16px; /* 2 * 8px */
+}
+
+h4 { /* Approx 20px */
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 16px; /* 2 * 8px */
+}
+
+h5 { /* Approx 18px */
+    font-size: 1.125rem;
+    font-weight: 500; /* Medium for H5/H6 */
+    margin-bottom: 8px; /* 1 * 8px */
+}
+
+h6 { /* Approx 16px */
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+p {
+    margin-bottom: 16px; /* 2 * 8px */
+    color: #212121;
+}
+
+a {
+    color: #1976D2; /* Secondary Blue for links */
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+a:hover {
+    color: #0D47A1; /* Primary Blue for link hover */
+    text-decoration: underline;
+}
+
+/* Basic alert styling from base.html */
+.alert {
+    margin-top: 16px; /* 2 * 8px */
+    padding: 16px;
+    border-radius: 4px;
+    /* Bootstrap will handle specific alert type colors */
+}
+
+/* 2. Navbar (.navbar-custom) */
 .navbar-custom {
-    background-color: #003366; /* Dark blue primary */
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    background-color: #0D47A1; /* Primary Blue */
+    padding: 12px 24px; /* Adjusted based on 8px grid */
 }
 .navbar-custom .navbar-brand {
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 1.75rem;
 }
 .navbar-custom .navbar-brand:hover {
-    color: #ffcc00; /* Yellow accent for hover */
+    color: #FFB300; /* CTA/Highlight Accent for hover */
 }
 .navbar-custom .nav-link {
-    color: #e0e0e0; /* Light grey for links */
-    padding: 0.5rem 1rem;
+    font-family: 'Inter', sans-serif;
+    color: #E0E0E0; /* Lighter grey for links on dark blue */
+    padding: 8px 16px;
     transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    font-weight: 500;
+    border-radius: 4px;
 }
 .navbar-custom .nav-link:hover,
 .navbar-custom .nav-link.active {
-    color: #ffffff;
-    background-color: #004080; /* Slightly lighter blue for hover/active */
-    border-radius: 4px;
+    color: #FFFFFF;
+    background-color: #1976D2; /* Secondary Blue for hover/active */
 }
 .navbar-custom .navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 .navbar-custom .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(224, 224, 224, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 .navbar-custom .navbar-text {
-    color: #d0d0d0;
+    color: #BDBDBD;
+    font-family: 'Inter', sans-serif;
+    padding-right: 16px;
 }
 .navbar-custom .btn-logout {
-    color: #ffdddd;
+    color: #FFCDD2;
+    font-weight: 500;
 }
 .navbar-custom .btn-logout:hover {
-    color: #ffffff;
-    background-color: #c82333;
+    color: #FFFFFF;
+    background-color: #C62828; /* Error Red for logout hover */
+}
+
+/* 3. Buttons */
+.btn { /* Base style for all buttons if not using Bootstrap's .btn directly or for overriding */
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    padding: 10px 24px;
     border-radius: 4px;
-}
-
-/* 3. Buttons (General) */
-/* .btn from home.html - This is a very generic class, might conflict with Bootstrap's .btn */
-/* For now, assuming it's a custom primary button for the hero section */
-.hero .btn { /* Scoping it to hero for now */
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    font-size: 1rem;
+    border-width: 1px;
+    border-style: solid;
+    text-decoration: none; /* Ensure links styled as buttons don't have underlines */
     display: inline-block;
-    background: #ff6600; /* Bright orange accent */
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease;
-    border: none; /* Explicitly remove border if any */
-}
-.hero .btn:hover {
-    background: #cc5200; /* Darker orange */
-}
-/* .btn-secondary from home.html - also generic */
-.hero .btn-secondary { /* Scoping to hero */
-    background: #00509e; /* Medium blue */
-    margin-left: 10px;
-}
-.hero .btn-secondary:hover {
-    background: #003366; /* Dark blue */
-}
-
-/* Common button styles for form submission / primary actions */
-.btn-submit, .btn-primary-custom, .btn-enroll, .btn-view-details {
-    background: #ff6600;
-    color: #fff !important; /* Important to override potential conflicts */
-    padding: 12px 20px;
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: inline-block; /* Default, can be overridden by .w-100 or specific context */
     text-align: center;
+    cursor: pointer;
 }
-.btn-submit:hover, .btn-primary-custom:hover, .btn-enroll:hover, .btn-view-details:hover {
-    background: #cc5200;
-    color: #fff !important;
+.btn:hover {
+    text-decoration: none; /* Ensure no underline on hover for button links */
 }
-.btn-enroll { /* Specific size from course detail */
-    padding: 12px 25px;
-    font-size: 1.2em;
-    margin-top: 20px;
+
+.btn-cta, /* Primary Call-to-Action Button Style */
+.btn-submit, /* For form submissions */
+.btn-primary-custom, /* Custom primary if needed */
+.btn-enroll, /* Course enroll button */
+.btn-view-details /* View details on catalog */
+{
+    background-color: #FFB300; /* CTA/Highlight Accent (Amber/Yellow) */
+    color: #212121;
+    border-color: #FFB300;
 }
-.btn-view-details { /* Specific size from catalog */
-    padding: 10px 20px;
-    font-size: 1em;
-    align-self: flex-start;
+.btn-cta:hover,
+.btn-submit:hover,
+.btn-primary-custom:hover,
+.btn-enroll:hover,
+.btn-view-details:hover {
+    background-color: #FFC107; /* Slightly lighter amber on hover */
+    border-color: #FFC107;
+    color: #212121;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Secondary Button Style */
+.btn-secondary-custom,
+.btn-back-link,
+.hero .btn-secondary /* Specific hero secondary button */
+{
+    background-color: transparent;
+    color: #1976D2; /* Secondary Blue for text */
+    border-color: #1976D2; /* Secondary Blue for border */
+}
+.btn-secondary-custom:hover,
+.btn-back-link:hover,
+.hero .btn-secondary:hover {
+    background-color: #1976D2; /* Secondary Blue background on hover */
+    color: #FFFFFF;
+    border-color: #1976D2;
+}
+/* Sizing adjustments */
+.btn-enroll {
+    padding: 12px 24px;
+    font-size: 1.125rem;
+    margin-top: 24px; /* 3 * 8px */
+}
+.btn-view-details {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    align-self: flex-start; /* For flex containers like course cards */
+}
+.hero .btn {
+    padding: 12px 32px;
+    font-size: 1.125rem;
+}
+.hero .btn-secondary {
+    margin-left: 16px;
 }
 
 
-/* Secondary/Back link button style */
-.btn-back-link, .btn-secondary-custom {
-    display: inline-block;
-    margin-top: 15px;
-    color: #00509e;
-    text-decoration: none;
-    font-size: 1em;
-    padding: 8px 15px;
-    border: 1px solid #00509e;
-    border-radius: 5px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-.btn-back-link:hover, .btn-secondary-custom:hover {
-    background-color: #00509e;
-    color: #fff;
-    text-decoration: none;
-}
-
-
-/* 4. Forms (.container-auth, .form-group, .errorlist) */
-/* Body styling specific to auth pages - might need a wrapper class if global body bg is different */
-.auth-page body { /* This selector won't work directly. Apply .auth-page to body or a wrapper */
-    background-color: #f4f4f4;
+/* 4. Forms */
+.auth-page-wrapper { /* Use this class on a div wrapping container-auth for full page flex centering */
     display: flex;
     justify-content: center;
-    align-items: center; /* Default, create_user overrides to flex-start */
-    min-height: 90vh;
-    padding: 20px 0;
+    align-items: center;
+    min-height: calc(100vh - 70px); /* Adjust 70px if navbar height changes */
+    padding: 32px 16px;
+    width: 100%;
+    background-color: #F5F7FA; /* Ensure body bg color applies if not on body directly */
 }
-.create-user-page body { /* Example for create_user specific body adjustments */
-    align-items: flex-start;
-    padding: 40px 20px;
+.create-user-page-wrapper {
+    align-items: flex-start; /* For longer forms */
 }
 
 .container-auth {
-    background: #fff;
-    padding: 30px 40px;
+    background: #FFFFFF;
+    padding: 32px 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     width: 100%;
-    max-width: 450px; /* Default for login/register */
+    max-width: 480px;
     text-align: center;
-    margin: 20px auto; /* Ensure it's centered if body is not flex container */
+    margin: 0 auto; /* Centering if not in a flex wrapper */
 }
-.container-auth.container-auth-wider { /* For create_user page */
+.container-auth-wider { /* For create_user page */
     max-width: 600px;
 }
 .container-auth h2 {
-    color: #003366;
-    margin-bottom: 25px;
-    font-size: 2em;
+    color: #0D47A1;
+    margin-bottom: 32px;
 }
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     text-align: left;
 }
 .form-group label {
     display: block;
     margin-bottom: 8px;
-    color: #555;
-    font-weight: bold;
+    color: #37474F;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
 }
 .form-group input[type="text"],
 .form-group input[type="email"],
@@ -205,276 +270,314 @@ body {
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    padding: 12px 16px;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
     box-sizing: border-box;
-    font-size: 1em;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    color: #212121;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #00509e;
-    box-shadow: 0 0 0 2px rgba(0, 80, 158, 0.2);
+    border-color: #1976D2;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
 }
-.form-group select[multiple] {
-    height: auto;
-}
+.form-group select[multiple] { height: auto; }
 .form-group .helptext,
 .form-group .form-text.text-muted {
     display: block;
-    margin-top: 5px;
-    font-size: 0.85em;
+    margin-top: 8px;
+    font-size: 0.875rem;
     color: #6c757d;
+    font-family: 'Inter', sans-serif;
 }
 .errorlist {
     list-style-type: none;
     padding: 0;
-    margin: 10px 0 15px 0; /* Adjusted default margin */
-    color: #d9534f;
-    font-size: 0.9em;
+    margin: 0 0 16px 0;
+    font-family: 'Inter', sans-serif;
     text-align: left;
 }
-.errorlist li {
-    margin-bottom: 5px;
-    padding: 8px;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
+.errorlist li { /* For non-field errors */
+    margin-bottom: 8px;
+    padding: 12px 16px;
+    background-color: #FFEBEE;
+    border: 1px solid #C62828;
+    color: #C62828;
     border-radius: 4px;
+    font-size: 0.9rem;
 }
-/* Field-specific errors (simpler style) */
-.form-group .errorlist {
-    margin-top: 5px;
+.form-group .errorlist { /* Field-specific errors */
+    margin-top: 8px;
     margin-bottom: 0;
+    padding-left: 0;
 }
-.form-group .errorlist li {
+.form-group .errorlist li { /* Simpler style for field errors */
     background-color: transparent;
     border: none;
     padding: 0;
-    color: #d9534f; /* Keep red color */
+    color: #C62828;
+    margin-bottom: 4px;
 }
-.login-link { /* From register/signup */
+.login-link {
     display: block;
-    margin-top: 20px;
-    color: #00509e;
+    margin-top: 24px;
+    color: #1976D2;
     text-decoration: none;
-    font-size: 0.95em;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
 }
 .login-link:hover {
+    color: #0D47A1;
     text-decoration: underline;
 }
-.form-actions { /* From create_user */
-    margin-top: 25px;
+.form-actions {
+    margin-top: 32px;
 }
-/* Styles for form p tags if {{ form.as_p }} is used (fallback) */
-form p {
-    margin-bottom: 20px;
-    text-align: left;
-}
-form p label { /* This is very general, prefer .form-group label */
-    /* display: block;
-    margin-bottom: 8px;
-    color: #555;
-    font-weight: bold; */
-}
-form p input[type="text"],
-form p input[type="email"],
-form p input[type="password"],
-form p select { /* Also general, prefer .form-group scoped inputs */
-    /* width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 1em; */
+
+/* 5. Page Wrappers & Layout */
+.container { /* General purpose container if not using Bootstrap's */
+    width: 90%;
+    max-width: 1140px; /* Common max-width */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 
-/* 5. Homepage Specific (.hero, .section, .features-grid, .courses-grid, .course-item, .cta-section, footer) */
-.hero { /* home.html */
-    background: #003366;
-    color: #fff;
-    padding: 60px 0;
+/* 6. Homepage Specific */
+.hero {
+    background: #0D47A1;
+    color: #FFFFFF;
+    padding: 64px 24px;
     text-align: center;
 }
 .hero h1 {
-    font-size: 2.8em;
-    margin-bottom: 10px;
+    color: #FFFFFF;
+    font-size: 3rem;
+    margin-bottom: 16px;
 }
 .hero p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
+    font-size: 1.25rem;
+    margin-bottom: 32px;
+    color: #E0E0E0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
-.section { /* home.html */
-    padding: 40px 0;
+.section {
+    padding: 48px 24px;
     text-align: center;
 }
 .section h2 {
-    font-size: 2em;
-    margin-bottom: 30px;
-    color: #003366;
+    margin-bottom: 40px;
 }
-.section-dark { /* home.html */
-    background: #f4f4f4;
+.section-dark {
+    background: #FFFFFF;
+    border-top: 1px solid #E0E0E0;
+    border-bottom: 1px solid #E0E0E0;
 }
-.features-grid, .courses-grid { /* home.html */
+.features-grid, .courses-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    gap: 24px;
     text-align: left;
 }
-.feature-item, .course-item { /* home.html */
-    background: #fff;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.feature-item, .course-item {
+    background: #FFFFFF;
+    padding: 24px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
-.feature-item h3, .course-item h3 { /* home.html */
-    color: #00509e;
+.feature-item:hover, .course-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+.feature-item h3, .course-item h3 {
+    color: #0D47A1;
     margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.5rem;
 }
-.cta-section { /* home.html */
-    background: #00509e;
-    color: #fff;
-    padding: 50px 0;
+.course-item p, .feature-item p {
+    font-family: 'Inter', sans-serif;
+    color: #37474F;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+/* Learn More buttons on course cards on homepage */
+.course-item .btn.btn-small { /* Assuming btn-small might be used */
+    background-color: transparent;
+    color: #1976D2;
+    border: 1px solid #1976D2;
+    padding: 8px 16px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+.course-item .btn.btn-small:hover {
+    background-color: #1976D2;
+    color: #FFFFFF;
+}
+
+.cta-section {
+    background: #1976D2;
+    color: #FFFFFF;
+    padding: 48px 24px;
     text-align: center;
 }
 .cta-section h2 {
-    color: #fff; /* Already specified in .section h2 but cta-section has different bg */
-    margin-bottom: 20px;
+    color: #FFFFFF;
+    margin-bottom: 24px;
 }
-footer { /* home.html */
+.cta-section p {
+    color: #E0E0E0;
+    margin-bottom: 32px;
+}
+/* CTA section buttons use .btn-cta and .btn-secondary-custom */
+
+footer {
     text-align: center;
-    padding: 20px;
-    background: #003366;
-    color: #fff;
-    margin-top: 30px;
+    padding: 32px 24px;
+    background: #263238;
+    color: #E0E0E0;
+    margin-top: 48px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
 }
-footer a { /* Ensuring footer links are visible */
-    color: #ffcc00; /* Yellow accent for footer links */
+footer p {
+    margin-bottom: 8px;
+    color: #E0E0E0;
+}
+footer a {
+    color: #80CBC4;
     text-decoration: none;
+    font-weight: 500;
 }
 footer a:hover {
+    color: #FFFFFF;
     text-decoration: underline;
 }
 
-
-/* 6. Course Catalog Specific (.catalog-container, .catalog-header, .course-grid, .course-card-catalog) */
-.catalog-container { /* course_catalog.html */
-    padding-top: 30px;
-    padding-bottom: 40px;
+/* 7. Course Catalog Specific */
+.catalog-container {
+    padding-top: 40px;
+    padding-bottom: 48px;
 }
-.catalog-header h1 { /* course_catalog.html */
-    color: #003366;
-    margin-bottom: 30px;
-    font-size: 2.8em;
+.catalog-header h1 {
     text-align: center;
+    margin-bottom: 40px;
 }
-/* .course-grid is already defined for homepage, ensure it's suitable or make it more specific */
-.catalog-container .course-grid { /* Scoping for catalog if needed */
-    /* display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px; */
+.catalog-container .courses-grid {
+    gap: 32px;
 }
-.course-card-catalog { /* course_catalog.html */
-    background-color: #fff;
-    border: 1px solid #ddd;
+.course-card-catalog {
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    padding: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 .course-card-catalog:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
 }
-.course-card-catalog h3 { /* course_catalog.html */
-    color: #00509e;
-    font-size: 1.6em;
+.course-card-catalog h3 {
     margin-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
+    font-size: 1.5rem;
 }
-.course-card-catalog .summary { /* course_catalog.html */
-    color: #444;
-    font-size: 1em;
+.course-card-catalog .summary {
+    font-family: 'Inter', sans-serif;
+    color: #37474F;
+    font-size: 0.95rem;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     flex-grow: 1;
 }
+/* .btn-view-details on catalog cards uses .btn-cta style */
 
 
-/* 7. Course Detail Pages Specific */
-.course-detail-container { /* course_detail pages */
-    background-color: #fff;
-    padding: 30px;
+/* 8. Course Detail Pages Specific */
+.course-detail-container {
+    background-color: #FFFFFF;
+    padding: 32px 40px;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    margin-top: 20px;
-    margin-bottom: 30px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    margin: 32px auto;
+    max-width: 960px;
 }
-.course-header h1 { /* course_detail pages */
-    color: #003366;
-    margin-bottom: 10px;
-    font-size: 2.5em;
-}
-.course-header .subtitle { /* course_detail pages */
-    font-size: 1.3em;
-    color: #555;
-    margin-bottom: 30px;
-}
-.course-section { /* course_detail pages - also used on home, check for conflicts */
-    margin-bottom: 30px;
-}
-.course-detail-container .course-section h2 { /* Scoping to course detail */
-    color: #00509e;
-    border-bottom: 2px solid #00509e;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    font-size: 1.8em;
-}
-.course-detail-container .course-section ul { /* Scoping to course detail */
-    list-style: disc;
-    margin-left: 20px;
-    padding-left: 0;
-}
-.course-detail-container .course-section ul li { /* Scoping to course detail */
+.course-header h1 {
     margin-bottom: 8px;
-    line-height: 1.6;
 }
-.course-detail-container .course-section p { /* Scoping to course detail */
+.course-header .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    color: #455A64;
+    margin-bottom: 32px;
+    font-weight: 400;
+}
+.course-detail-container .course-section {
+    margin-bottom: 32px;
+}
+.course-detail-container .course-section h2 {
+    border-bottom: 2px solid #1976D2;
+    padding-bottom: 8px;
+    margin-bottom: 24px;
+    font-size: 1.75rem;
+}
+.course-detail-container .course-section ul {
+    list-style: disc;
+    margin-left: 24px;
+    padding-left: 0;
+    font-family: 'Inter', sans-serif;
+}
+.course-detail-container .course-section ul li {
+    margin-bottom: 12px;
     line-height: 1.7;
-    color: #444;
+    color: #212121;
+}
+.course-detail-container .course-section p {
+    line-height: 1.7;
+    color: #212121;
+    font-family: 'Inter', sans-serif;
 }
 
-/* Key Topics Grid Styling - from course_detail pages */
+/* Key Topics Grid Styling */
 .key-topics-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
+    gap: 16px;
+    margin-top: 24px;
 }
 .topic-card {
-    background-color: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    background-color: #F5F7FA;
+    padding: 16px;
+    border-radius: 6px;
+    border: 1px solid #E0E0E0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     text-align: left;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 .topic-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 .topic-card h4 {
-    color: #003366;
-    font-size: 1.15em;
+    font-family: 'Montserrat', sans-serif;
+    color: #0D47A1;
+    font-size: 1.1rem;
+    font-weight: 600;
     margin-bottom: 0;
     line-height: 1.4;
     display: flex;
@@ -483,62 +586,43 @@ footer a:hover {
     cursor: pointer;
 }
 .topic-toggle-icon {
-    font-size: 0.8em;
-    margin-left: 10px;
-    transition: transform 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    margin-left: 8px;
+    transition: transform 0.2s ease;
+    font-weight: 600;
+    color: #1976D2;
 }
 .topic-toggle-icon.expanded {
     transform: rotate(45deg);
 }
 .topic-detail-content {
     display: none;
-    margin-top: 15px;
-    padding: 15px;
-    background-color: #e9ecef;
-    border-radius: 6px;
-    font-size: 0.95em;
+    margin-top: 12px;
+    padding: 16px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    border: 1px solid #E0E0E0;
+    font-size: 0.9rem;
     line-height: 1.6;
-    color: #333;
+    color: #212121;
+    font-family: 'Inter', sans-serif;
 }
 .topic-detail-content p {
-    margin-bottom: 10px;
-    color: #333;
+    margin-bottom: 8px;
+    color: #212121;
 }
 .topic-detail-content p:last-child {
     margin-bottom: 0;
 }
 
-/* Ensure login.html, which had no styles, also benefits from .container-auth if its body gets a class */
-/* Or add specific simple styles for it if it's meant to be very plain */
-.login-page .container-auth { /* Example if login.html body gets class="login-page" */
-    max-width: 400px; /* Potentially smaller for simpler login form */
-}
-.login-page .container-auth h2 {
-    font-size: 1.8em; /* Slightly smaller title for login */
-}
-.login-page form p { /* If login.html uses {{form.as_p}} */
-    margin-bottom: 15px;
-}
-.login-page form button[type="submit"] {
-    /* Reuse .btn-submit or define a specific one */
-    /* For example, if login.html's button was just <button type="submit">Login</button> */
-    background: #ff6600;
-    color: #fff !important;
-    padding: 10px 15px; /* Slightly smaller */
-    text-decoration: none;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 100%;
-    margin-top: 15px;
-}
-.login-page form button[type="submit"]:hover {
-     background: #cc5200;
-}
-
-/* Utility class for full-width buttons if not already part of .btn-submit etc. */
+/* 9. Utility Classes */
 .w-100 {
     width: 100% !important;
 }
+/* Add specific body classes to templates for auth page styling */
+/* e.g., in login.html: {% block body_class %}auth-page login-page{% endblock %} */
+/* then in base.html: <body class="{% block body_class %}{% endblock %}"> */
+/* This allows conditional application of body styles like background and flex centering. */
+/* For now, .auth-page-wrapper can be used inside {% block content %} as an alternative. */
+/* The login page specific styles (.login-page .container-auth etc.) are illustrative if such a class is added. */
