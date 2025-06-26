@@ -1,0 +1,646 @@
+/* Table of Contents
+1. Global / Body Styles & Base Typography
+2. Navbar (.navbar-custom)
+3. Buttons (General & CTA, Secondary)
+4. Forms (.container-auth, .form-group, .errorlist)
+5. Page Wrappers & Layout (.auth-page-wrapper, .container - general purpose)
+6. Homepage Specific (.hero, .section, .features-grid, .courses-grid, .course-item, .cta-section, footer)
+7. Course Catalog Specific (.catalog-container, .catalog-header, .course-card-catalog)
+8. Course Detail Pages Specific (.course-detail-container, .course-header, .course-section, .key-topics-grid, .topic-card, .topic-detail-content, .topic-toggle-icon)
+9. Utility Classes
+*/
+
+/* 1. Global / Body Styles & Base Typography */
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.65;
+    color: #212121; /* Text Dark */
+    background-color: #F5F7FA; /* Background Light */
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: #0D47A1; /* Primary Blue */
+    margin-top: 0;
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+h3 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+h5 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+h6 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+p {
+    margin-bottom: 16px;
+    color: #212121;
+}
+
+a {
+    color: #1976D2; /* Secondary Blue */
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+}
+a:hover {
+    color: #0D47A1; /* Primary Blue */
+    text-decoration: underline;
+}
+
+.alert {
+    margin-top: 16px;
+    padding: 16px;
+    border-radius: 4px;
+}
+
+/* 2. Navbar (.navbar-custom) */
+.navbar-custom {
+    background-color: #0D47A1; /* Primary Blue */
+    padding: 12px 24px;
+}
+.navbar-custom .navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 1.75rem;
+}
+.navbar-custom .navbar-brand:hover {
+    color: #FFB300; /* CTA/Highlight Accent */
+}
+.navbar-custom .nav-link {
+    font-family: 'Inter', sans-serif;
+    color: #E0E0E0;
+    padding: 8px 16px;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    font-weight: 500;
+    border-radius: 4px;
+}
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+    color: #FFFFFF;
+    background-color: #1976D2; /* Secondary Blue */
+}
+.navbar-custom .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+.navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(224, 224, 224, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.navbar-custom .navbar-text {
+    color: #BDBDBD;
+    font-family: 'Inter', sans-serif;
+    padding-right: 16px;
+}
+.navbar-custom .btn-logout { /* Class for logout link in navbar */
+    color: #FFCDD2; /* Light red, for contrast on blue */
+    font-weight: 500;
+}
+.navbar-custom .btn-logout:hover {
+    color: #FFFFFF;
+    background-color: #C62828; /* Error Red */
+}
+
+/* 3. Buttons */
+.btn { /* Base style for all buttons */
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    font-size: 1rem;
+    border-width: 1px;
+    border-style: solid;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+.btn:hover {
+    text-decoration: none;
+}
+
+.btn-cta,
+.btn-submit,
+.btn-primary-custom,
+.btn-enroll,
+.btn-view-details {
+    background-color: #FFB300; /* CTA/Highlight Accent (Amber/Yellow) */
+    color: #212121;
+    border-color: #FFB300;
+}
+.btn-cta:hover,
+.btn-submit:hover,
+.btn-primary-custom:hover,
+.btn-enroll:hover,
+.btn-view-details:hover {
+    background-color: #FFC107;
+    border-color: #FFC107;
+    color: #212121;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.btn-secondary-custom,
+.btn-back-link,
+.hero .btn-secondary {
+    background-color: transparent;
+    color: #1976D2; /* Secondary Blue */
+    border-color: #1976D2;
+}
+.btn-secondary-custom:hover,
+.btn-back-link:hover,
+.hero .btn-secondary:hover {
+    background-color: #1976D2;
+    color: #FFFFFF;
+    border-color: #1976D2;
+}
+
+.btn-enroll {
+    padding: 12px 24px;
+    font-size: 1.125rem;
+    margin-top: 24px;
+}
+.btn-view-details {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    align-self: flex-start;
+}
+.hero .btn {
+    padding: 12px 32px;
+    font-size: 1.125rem;
+}
+.hero .btn-secondary {
+    margin-left: 16px;
+}
+
+
+/* 4. Forms */
+.auth-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px);
+    padding: 32px 16px;
+    width: 100%;
+}
+.create-user-page-wrapper { /* If create_user page needs different alignment */
+    align-items: flex-start;
+}
+
+.container-auth {
+    background: #FFFFFF;
+    padding: 32px 40px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+    margin: 0 auto;
+}
+.container-auth-wider {
+    max-width: 600px;
+}
+.container-auth h2 {
+    color: #0D47A1;
+    margin-bottom: 32px;
+}
+.form-group {
+    margin-bottom: 24px;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #37474F;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="url"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group input[type="datetime-local"],
+.form-group input[type="month"],
+.form-group input[type="search"],
+.form-group input[type="tel"],
+.form-group input[type="time"],
+.form-group input[type="week"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    color: #212121;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #1976D2;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
+}
+.form-group select[multiple] { height: auto; }
+.form-group .helptext,
+.form-group .form-text.text-muted {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.875rem;
+    color: #6c757d;
+    font-family: 'Inter', sans-serif;
+}
+ul.errorlist { /* For non_field_errors and general form errors */
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+}
+ul.errorlist li {
+    margin-bottom: 8px;
+    padding: 12px 16px;
+    background-color: #FFEBEE; /* Lighter red background for errors */
+    border: 1px solid #C62828; /* Error Red border */
+    color: #C62828; /* Error Red text */
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+.form-group ul.errorlist { /* Field-specific errors */
+    margin-top: 8px;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+.form-group ul.errorlist li {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: #C62828;
+    margin-bottom: 4px;
+}
+.login-link {
+    display: block;
+    margin-top: 24px;
+    color: #1976D2;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+}
+.login-link:hover {
+    color: #0D47A1;
+    text-decoration: underline;
+}
+.form-actions {
+    margin-top: 32px;
+}
+
+/* 5. Page Wrappers & Layout */
+.container { /* General purpose container */
+    width: 90%;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+
+/* 6. Homepage Specific */
+.hero {
+    background: #0D47A1;
+    color: #FFFFFF;
+    padding: 64px 24px;
+    text-align: center;
+}
+.hero h1 {
+    color: #FFFFFF;
+    font-size: 3rem;
+    margin-bottom: 16px;
+}
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 32px;
+    color: #E0E0E0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.section {
+    padding: 48px 24px;
+    text-align: center;
+}
+.section h2 {
+    margin-bottom: 40px;
+}
+.section-dark {
+    background: #FFFFFF;
+    border-top: 1px solid #E0E0E0;
+    border-bottom: 1px solid #E0E0E0;
+}
+.features-grid, .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    text-align: left;
+}
+.feature-item, .course-item {
+    background: #FFFFFF;
+    padding: 24px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.feature-item:hover, .course-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+.feature-item h3, .course-item h3 {
+    color: #0D47A1;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+}
+.course-item p, .feature-item p {
+    font-family: 'Inter', sans-serif;
+    color: #37474F;
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+.course-item .btn.btn-small {
+    background-color: transparent;
+    color: #1976D2;
+    border: 1px solid #1976D2;
+    padding: 8px 16px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+.course-item .btn.btn-small:hover {
+    background-color: #1976D2;
+    color: #FFFFFF;
+}
+
+.cta-section {
+    background: #1976D2;
+    color: #FFFFFF;
+    padding: 48px 24px;
+    text-align: center;
+}
+.cta-section h2 {
+    color: #FFFFFF;
+    margin-bottom: 24px;
+}
+.cta-section p {
+    color: #E0E0E0;
+    margin-bottom: 32px;
+}
+
+footer {
+    text-align: center;
+    padding: 32px 24px;
+    background: #263238;
+    color: #E0E0E0;
+    margin-top: 48px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+}
+footer p {
+    margin-bottom: 8px;
+    color: #E0E0E0;
+}
+footer a {
+    color: #80CBC4;
+    text-decoration: none;
+    font-weight: 500;
+}
+footer a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+/* 7. Course Catalog Specific */
+.catalog-container {
+    padding-top: 40px;
+    padding-bottom: 48px;
+}
+.catalog-header h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.catalog-container .courses-grid { /* Use .courses-grid from homepage */
+    gap: 32px;
+}
+.course-card-catalog {
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.course-card-catalog:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+.course-card-catalog h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+}
+.course-card-catalog .summary {
+    font-family: 'Inter', sans-serif;
+    color: #37474F;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
+
+/* 8. Course Detail Pages Specific */
+.course-detail-container {
+    background-color: #FFFFFF;
+    padding: 32px 40px;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    margin: 32px auto;
+    max-width: 960px;
+}
+.course-header h1 {
+    margin-bottom: 8px;
+}
+.course-header .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    color: #455A64;
+    margin-bottom: 32px;
+    font-weight: 400;
+}
+.course-detail-container .course-section {
+    margin-bottom: 32px;
+}
+.course-detail-container .course-section h2 {
+    border-bottom: 2px solid #1976D2;
+    padding-bottom: 8px;
+    margin-bottom: 24px;
+    font-size: 1.75rem;
+}
+.course-detail-container .course-section ul {
+    list-style: disc;
+    margin-left: 24px;
+    padding-left: 0;
+    font-family: 'Inter', sans-serif;
+}
+.course-detail-container .course-section ul li {
+    margin-bottom: 12px;
+    line-height: 1.7;
+    color: #212121;
+}
+.course-detail-container .course-section p {
+    line-height: 1.7;
+    color: #212121;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Key Topics Grid Styling */
+.key-topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+.topic-card {
+    background-color: #F5F7FA;
+    padding: 16px;
+    border-radius: 6px;
+    border: 1px solid #E0E0E0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    text-align: left;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.topic-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.topic-card h4 {
+    font-family: 'Montserrat', sans-serif;
+    color: #0D47A1;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    line-height: 1.4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.topic-toggle-icon {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    margin-left: 8px;
+    transition: transform 0.2s ease;
+    font-weight: 600;
+    color: #1976D2;
+}
+.topic-toggle-icon.expanded {
+    transform: rotate(45deg);
+}
+.topic-detail-content {
+    display: none;
+    margin-top: 12px;
+    padding: 16px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    border: 1px solid #E0E0E0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #212121;
+    font-family: 'Inter', sans-serif;
+}
+.topic-detail-content p {
+    margin-bottom: 8px;
+    color: #212121;
+}
+.topic-detail-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* 9. Utility Classes */
+.w-100 {
+    width: 100% !important;
+}
+
+/* It's good practice to add specific classes to body tags on templates for page-specific body styling,
+   e.g., in login.html: {% block body_class %}auth-page login-page{% endblock %}
+   then in base.html: <body class="{% block body_class %}{% endblock %}">
+   This allows the .auth-page styles for body (background, flex centering) to apply only where needed.
+   The .auth-page-wrapper class is an alternative if modifying body tag is not preferred.
+*/
+/* Example for login page if it had a body class:
+.login-page .container-auth {
+    max-width: 420px;
+}
+*/
+/* Styling for a plain submit button on login if it doesn't use .btn-submit */
+/* This is now covered by ensuring the button has class="btn btn-submit" or similar in the template */
+/*
+.login-page form button[type="submit"]:not(.btn-submit) {
+    background: #FFB300;
+    color: #212121;
+    padding: 12px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 24px;
+}
+.login-page form button[type="submit"]:not(.btn-submit):hover {
+     background: #FFC107;
+}
+*/
