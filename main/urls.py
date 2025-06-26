@@ -28,5 +28,6 @@ urlpatterns = [
     path('courses/ethical-hacking/', views.ethical_hacking_view, name='course_ethical_hacking'),
     path('courses/cloud-security/', views.cloud_security_view, name='course_cloud_security'),
     path('courses/incident-response/', views.incident_response_view, name='course_incident_response'),
+    path('courses/', views.course_catalog_view, name='course_catalog'), # New Catalog URL
 ]
 

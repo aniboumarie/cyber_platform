@@ -194,3 +194,31 @@ def cloud_security_view(request):
 
 def incident_response_view(request):
     return render(request, 'courses/incident_response.html')
+
+def course_catalog_view(request):
+    courses_data = [
+        {
+            'title': 'Network Security Fundamentals',
+            'summary': 'Master network defense essentials, from core protocols to advanced security measures, and safeguard digital assets effectively.',
+            'detail_url_name': 'course_network_security',
+        },
+        {
+            'title': 'Ethical Hacking & Penetration Testing',
+            'summary': 'Learn to think like an attacker. Discover vulnerabilities and master the tools for offensive security and robust system defense.',
+            'detail_url_name': 'course_ethical_hacking',
+        },
+        {
+            'title': 'Cloud Security Essentials',
+            'summary': 'Navigate cloud complexities with confidence. Secure data, applications, and infrastructure on major cloud platforms like AWS, Azure, and GCP.',
+            'detail_url_name': 'course_cloud_security',
+        },
+        {
+            'title': 'Incident Response & Digital Forensics',
+            'summary': 'Effectively manage security breaches and uncover digital evidence. Master the lifecycle of incident handling and forensic investigation.',
+            'detail_url_name': 'course_incident_response',
+        }
+    ]
+    context = {
+        'courses': courses_data
+    }
+    return render(request, 'course_catalog.html', context)
