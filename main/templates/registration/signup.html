@@ -1,6 +1,162 @@
-<h2>Sign Up</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Sign Up</button>
-</form>
+{% extends 'base.html' %}
+
+{% block title %}Sign Up - Cybersecurity Training Platform{% endblock %}
+
+{% block content %}
+<style>
+  /* Reusing styles from register.html for consistency.
+     Ideally, this would be in a shared CSS file. */
+  body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4; /* Light grey background for the page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh; /* Ensure it takes at least the viewport height */
+    margin: 0;
+    padding: 20px 0;
+  }
+  .container-auth {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 450px; /* Max width for the form container */
+    text-align: center;
+  }
+  .container-auth h2 {
+    color: #003366; /* Dark blue */
+    margin-bottom: 25px;
+    font-size: 2em;
+  }
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+  }
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"],
+  .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+  }
+  .form-group input[type="text"]:focus,
+  .form-group input[type="email"]:focus,
+  .form-group input[type="password"]:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #00509e;
+    box-shadow: 0 0 0 2px rgba(0, 80, 158, 0.2);
+  }
+  .btn-submit {
+    background: #ff6600;
+    color: #fff;
+    padding: 12px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .btn-submit:hover {
+    background: #cc5200;
+  }
+  .login-link { /* Assuming a link to login might be useful here too */
+    display: block;
+    margin-top: 20px;
+    color: #00509e;
+    text-decoration: none;
+    font-size: 0.95em;
+  }
+  .login-link:hover {
+    text-decoration: underline;
+  }
+
+  .errorlist {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    color: #d9534f;
+    font-size: 0.9em;
+  }
+  .errorlist li {
+    margin-bottom: 5px;
+  }
+
+  form p {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  form p label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+  }
+  form p input[type="text"],
+  form p input[type="email"],
+  form p input[type="password"],
+  form p select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+  }
+</style>
+
+<div class="container-auth">
+  <h2>Sign Up</h2>
+  <p style="text-align: center; color: #555; margin-bottom: 25px;">Create your account to access our platform.</p>
+  <form method="post">
+    {% csrf_token %}
+
+    {{ form.non_field_errors }}
+
+    {% for field in form %}
+      <div class="form-group">
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey; display: block; margin-top: 4px;">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red; font-size: 0.9em; margin-top: 4px;">{{ error }}</p>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    {% if 'role' in form.fields %}
+    <!-- Optional: If a 'role' field might be part of this specific form -->
+    <!-- You might need to adjust if the 'role' field comes from the Django form itself -->
+    {% else %}
+      <!-- If this signup form has a predefined role or no role selection,
+           this section can be omitted or adjusted.
+           For now, assuming the Django form `{{ form }}` handles all necessary fields.
+           If a manual role dropdown is needed like in register.html, it would go here.
+      -->
+    {% endif %}
+
+    <button type="submit" class="btn-submit">Sign Up</button>
+  </form>
+  <a href="{% url 'login' %}" class="login-link">Already have an account? Log In</a>
+</div>
+
+{% endblock %}
