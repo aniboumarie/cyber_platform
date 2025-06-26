@@ -1,0 +1,68 @@
+<!-- mainapp/templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Cybersecurity Platform{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'login' %}">Cybersecurity Platform</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          {% if user.groups.all.0.name == "Admin" %}
+          <a class="nav-link" href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
+          <a class="nav-link" href="{% url 'manage_users' %}">Manage Users</a>
+          <a class="nav-link" href="{% url 'create_user' %}">Create User</a>
+          {% elif user.groups.all.0.name == "Trainer" %}
+          <a class="nav-link" href="{% url 'trainer_dashboard' %}">Trainer Dashboard</a>
+          {% elif user.groups.all.0.name == "Trainee" %}
+          <a class="nav-link" href="{% url 'trainee_dashboard' %}">Trainee Dashboard</a>
+          {% endif %}
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <span class="navbar-text me-3">Hi, {{ user.username }}</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+      </ul>
+      {% else %}
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+      </ul>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+    {% block messages %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li class="alert alert-{{ message.tags }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endblock %}
+    
+    {% block content %}{% endblock %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
