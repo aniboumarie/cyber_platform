@@ -1,0 +1,544 @@
+/* Table of Contents
+1. Global / Body Styles
+2. Navbar (.navbar-custom)
+3. Buttons (General: .btn, .btn-enroll, .btn-submit, .btn-view-details, .btn-back-link)
+4. Forms (.container-auth, .form-group, .errorlist)
+5. Homepage Specific (.hero, .section, .features-grid, .courses-grid, .course-item, .cta-section, footer)
+6. Course Catalog Specific (.catalog-container, .catalog-header, .course-grid, .course-card-catalog)
+7. Course Detail Pages Specific (.course-detail-container, .course-header, .course-section, .key-topics-grid, .topic-card, .topic-detail-content, .topic-toggle-icon)
+*/
+
+/* 1. Global / Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+    padding: 0; /* Base.html had padding-top:0, home.html had padding:0. This is a reset. Auth pages add their own body bg and padding. */
+    /* background-color: #f4f4f4; /* Consider if this should be global or only for auth/form pages */
+}
+
+.container { /* From home.html, might be too general, used by Bootstrap too. Scope if needed. */
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px; /* This might conflict with Bootstrap's .container. Consider renaming or careful usage. */
+}
+
+.alert { /* From base.html */
+    margin-top: 1rem;
+}
+
+/* 2. Navbar (.navbar-custom) - From base.html */
+.navbar-custom {
+    background-color: #003366; /* Dark blue primary */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.navbar-custom .navbar-brand {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.navbar-custom .navbar-brand:hover {
+    color: #ffcc00; /* Yellow accent for hover */
+}
+.navbar-custom .nav-link {
+    color: #e0e0e0; /* Light grey for links */
+    padding: 0.5rem 1rem;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+    color: #ffffff;
+    background-color: #004080; /* Slightly lighter blue for hover/active */
+    border-radius: 4px;
+}
+.navbar-custom .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+.navbar-custom .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.navbar-custom .navbar-text {
+    color: #d0d0d0;
+}
+.navbar-custom .btn-logout {
+    color: #ffdddd;
+}
+.navbar-custom .btn-logout:hover {
+    color: #ffffff;
+    background-color: #c82333;
+    border-radius: 4px;
+}
+
+/* 3. Buttons (General) */
+/* .btn from home.html - This is a very generic class, might conflict with Bootstrap's .btn */
+/* For now, assuming it's a custom primary button for the hero section */
+.hero .btn { /* Scoping it to hero for now */
+    display: inline-block;
+    background: #ff6600; /* Bright orange accent */
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    border: none; /* Explicitly remove border if any */
+}
+.hero .btn:hover {
+    background: #cc5200; /* Darker orange */
+}
+/* .btn-secondary from home.html - also generic */
+.hero .btn-secondary { /* Scoping to hero */
+    background: #00509e; /* Medium blue */
+    margin-left: 10px;
+}
+.hero .btn-secondary:hover {
+    background: #003366; /* Dark blue */
+}
+
+/* Common button styles for form submission / primary actions */
+.btn-submit, .btn-primary-custom, .btn-enroll, .btn-view-details {
+    background: #ff6600;
+    color: #fff !important; /* Important to override potential conflicts */
+    padding: 12px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block; /* Default, can be overridden by .w-100 or specific context */
+    text-align: center;
+}
+.btn-submit:hover, .btn-primary-custom:hover, .btn-enroll:hover, .btn-view-details:hover {
+    background: #cc5200;
+    color: #fff !important;
+}
+.btn-enroll { /* Specific size from course detail */
+    padding: 12px 25px;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+.btn-view-details { /* Specific size from catalog */
+    padding: 10px 20px;
+    font-size: 1em;
+    align-self: flex-start;
+}
+
+
+/* Secondary/Back link button style */
+.btn-back-link, .btn-secondary-custom {
+    display: inline-block;
+    margin-top: 15px;
+    color: #00509e;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 8px 15px;
+    border: 1px solid #00509e;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.btn-back-link:hover, .btn-secondary-custom:hover {
+    background-color: #00509e;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+/* 4. Forms (.container-auth, .form-group, .errorlist) */
+/* Body styling specific to auth pages - might need a wrapper class if global body bg is different */
+.auth-page body { /* This selector won't work directly. Apply .auth-page to body or a wrapper */
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Default, create_user overrides to flex-start */
+    min-height: 90vh;
+    padding: 20px 0;
+}
+.create-user-page body { /* Example for create_user specific body adjustments */
+    align-items: flex-start;
+    padding: 40px 20px;
+}
+
+.container-auth {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 450px; /* Default for login/register */
+    text-align: center;
+    margin: 20px auto; /* Ensure it's centered if body is not flex container */
+}
+.container-auth.container-auth-wider { /* For create_user page */
+    max-width: 600px;
+}
+.container-auth h2 {
+    color: #003366;
+    margin-bottom: 25px;
+    font-size: 2em;
+}
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="url"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group input[type="datetime-local"],
+.form-group input[type="month"],
+.form-group input[type="search"],
+.form-group input[type="tel"],
+.form-group input[type="time"],
+.form-group input[type="week"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #00509e;
+    box-shadow: 0 0 0 2px rgba(0, 80, 158, 0.2);
+}
+.form-group select[multiple] {
+    height: auto;
+}
+.form-group .helptext,
+.form-group .form-text.text-muted {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85em;
+    color: #6c757d;
+}
+.errorlist {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0 15px 0; /* Adjusted default margin */
+    color: #d9534f;
+    font-size: 0.9em;
+    text-align: left;
+}
+.errorlist li {
+    margin-bottom: 5px;
+    padding: 8px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+}
+/* Field-specific errors (simpler style) */
+.form-group .errorlist {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+.form-group .errorlist li {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: #d9534f; /* Keep red color */
+}
+.login-link { /* From register/signup */
+    display: block;
+    margin-top: 20px;
+    color: #00509e;
+    text-decoration: none;
+    font-size: 0.95em;
+}
+.login-link:hover {
+    text-decoration: underline;
+}
+.form-actions { /* From create_user */
+    margin-top: 25px;
+}
+/* Styles for form p tags if {{ form.as_p }} is used (fallback) */
+form p {
+    margin-bottom: 20px;
+    text-align: left;
+}
+form p label { /* This is very general, prefer .form-group label */
+    /* display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold; */
+}
+form p input[type="text"],
+form p input[type="email"],
+form p input[type="password"],
+form p select { /* Also general, prefer .form-group scoped inputs */
+    /* width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em; */
+}
+
+
+/* 5. Homepage Specific (.hero, .section, .features-grid, .courses-grid, .course-item, .cta-section, footer) */
+.hero { /* home.html */
+    background: #003366;
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+}
+.hero h1 {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+}
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+.section { /* home.html */
+    padding: 40px 0;
+    text-align: center;
+}
+.section h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #003366;
+}
+.section-dark { /* home.html */
+    background: #f4f4f4;
+}
+.features-grid, .courses-grid { /* home.html */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    text-align: left;
+}
+.feature-item, .course-item { /* home.html */
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.feature-item h3, .course-item h3 { /* home.html */
+    color: #00509e;
+    margin-top: 0;
+}
+.cta-section { /* home.html */
+    background: #00509e;
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+.cta-section h2 {
+    color: #fff; /* Already specified in .section h2 but cta-section has different bg */
+    margin-bottom: 20px;
+}
+footer { /* home.html */
+    text-align: center;
+    padding: 20px;
+    background: #003366;
+    color: #fff;
+    margin-top: 30px;
+}
+footer a { /* Ensuring footer links are visible */
+    color: #ffcc00; /* Yellow accent for footer links */
+    text-decoration: none;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+/* 6. Course Catalog Specific (.catalog-container, .catalog-header, .course-grid, .course-card-catalog) */
+.catalog-container { /* course_catalog.html */
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+.catalog-header h1 { /* course_catalog.html */
+    color: #003366;
+    margin-bottom: 30px;
+    font-size: 2.8em;
+    text-align: center;
+}
+/* .course-grid is already defined for homepage, ensure it's suitable or make it more specific */
+.catalog-container .course-grid { /* Scoping for catalog if needed */
+    /* display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; */
+}
+.course-card-catalog { /* course_catalog.html */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.course-card-catalog:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+.course-card-catalog h3 { /* course_catalog.html */
+    color: #00509e;
+    font-size: 1.6em;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.course-card-catalog .summary { /* course_catalog.html */
+    color: #444;
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+
+/* 7. Course Detail Pages Specific */
+.course-detail-container { /* course_detail pages */
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.course-header h1 { /* course_detail pages */
+    color: #003366;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+.course-header .subtitle { /* course_detail pages */
+    font-size: 1.3em;
+    color: #555;
+    margin-bottom: 30px;
+}
+.course-section { /* course_detail pages - also used on home, check for conflicts */
+    margin-bottom: 30px;
+}
+.course-detail-container .course-section h2 { /* Scoping to course detail */
+    color: #00509e;
+    border-bottom: 2px solid #00509e;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+.course-detail-container .course-section ul { /* Scoping to course detail */
+    list-style: disc;
+    margin-left: 20px;
+    padding-left: 0;
+}
+.course-detail-container .course-section ul li { /* Scoping to course detail */
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+.course-detail-container .course-section p { /* Scoping to course detail */
+    line-height: 1.7;
+    color: #444;
+}
+
+/* Key Topics Grid Styling - from course_detail pages */
+.key-topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+.topic-card {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    text-align: left;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+}
+.topic-card h4 {
+    color: #003366;
+    font-size: 1.15em;
+    margin-bottom: 0;
+    line-height: 1.4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.topic-toggle-icon {
+    font-size: 0.8em;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+.topic-toggle-icon.expanded {
+    transform: rotate(45deg);
+}
+.topic-detail-content {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 6px;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #333;
+}
+.topic-detail-content p {
+    margin-bottom: 10px;
+    color: #333;
+}
+.topic-detail-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Ensure login.html, which had no styles, also benefits from .container-auth if its body gets a class */
+/* Or add specific simple styles for it if it's meant to be very plain */
+.login-page .container-auth { /* Example if login.html body gets class="login-page" */
+    max-width: 400px; /* Potentially smaller for simpler login form */
+}
+.login-page .container-auth h2 {
+    font-size: 1.8em; /* Slightly smaller title for login */
+}
+.login-page form p { /* If login.html uses {{form.as_p}} */
+    margin-bottom: 15px;
+}
+.login-page form button[type="submit"] {
+    /* Reuse .btn-submit or define a specific one */
+    /* For example, if login.html's button was just <button type="submit">Login</button> */
+    background: #ff6600;
+    color: #fff !important;
+    padding: 10px 15px; /* Slightly smaller */
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 15px;
+}
+.login-page form button[type="submit"]:hover {
+     background: #cc5200;
+}
+
+/* Utility class for full-width buttons if not already part of .btn-submit etc. */
+.w-100 {
+    width: 100% !important;
+}

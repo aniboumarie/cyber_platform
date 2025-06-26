@@ -3,68 +3,7 @@
 {% block title %}Course Catalog - CyberGuard Training{% endblock %}
 
 {% block content %}
-<style>
-  .catalog-container {
-    padding-top: 30px;
-    padding-bottom: 40px;
-  }
-  .catalog-header h1 {
-    color: #003366; /* Dark Blue */
-    margin-bottom: 30px;
-    font-size: 2.8em;
-    text-align: center;
-  }
-  .course-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 25px;
-  }
-  .course-card-catalog {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Pushes button to bottom */
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  }
-  .course-card-catalog:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  }
-  .course-card-catalog h3 {
-    color: #00509e; /* Medium Blue */
-    font-size: 1.6em;
-    margin-top: 0;
-    margin-bottom: 15px;
-  }
-  .course-card-catalog .summary {
-    color: #444;
-    font-size: 1em;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    flex-grow: 1; /* Allows summary to take available space */
-  }
-  .btn-view-details {
-    background-color: #ff6600; /* Bright Orange */
-    color: white !important; /* Ensure text color is white */
-    padding: 10px 20px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    transition: background-color 0.3s ease;
-    align-self: flex-start; /* Align button to the start of the flex item (card bottom) */
-  }
-  .btn-view-details:hover {
-    background-color: #cc5200; /* Darker Orange */
-    color: white !important;
-  }
-</style>
+{# Styles moved to main/static/main/css/style.css #}
 
 <div class="container catalog-container">
   <div class="catalog-header">
