@@ -87,6 +87,35 @@
     font-size: 1.15em; /* Slightly larger for emphasis */
     margin-bottom: 0; /* Remove bottom margin if only title */
     line-height: 1.4;
+    display: flex; /* For icon alignment */
+    justify-content: space-between; /* Icon to the right */
+    align-items: center;
+    cursor: pointer; /* Make title clickable */
+  }
+  .topic-toggle-icon {
+    font-size: 0.8em; /* Smaller icon */
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+  }
+  .topic-toggle-icon.expanded {
+    transform: rotate(45deg);
+  }
+  .topic-detail-content {
+    display: none; /* Hidden by default */
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #e9ecef; /* Slightly different background for detail */
+    border-radius: 6px;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #333;
+  }
+  .topic-detail-content p {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  .topic-detail-content p:last-child {
+    margin-bottom: 0;
   }
 </style>
 
@@ -132,15 +161,42 @@
   <div class="course-section key-topics">
     <h2>Key Topics Covered</h2>
     <div class="key-topics-grid">
-      <div class="topic-card"><h4>Introduction to Cloud Computing and Security Models (Shared Responsibility)</h4></div>
-      <div class="topic-card"><h4>Identity and Access Management (IAM) - Users, Roles, Policies</h4></div>
-      <div class="topic-card"><h4>Cloud Data Security - Encryption, Key Management, Data Masking</h4></div>
-      <div class="topic-card"><h4>Cloud Network Security - Virtual Networks, Security Groups, WAFs</h4></div>
-      <div class="topic-card"><h4>Infrastructure Security in IaaS, PaaS, and SaaS</h4></div>
-      <div class="topic-card"><h4>Security Operations and Monitoring in the Cloud (Logging, Auditing)</h4></div>
-      <div class="topic-card"><h4>Compliance and Legal Considerations in Cloud Environments</h4></div>
-      <div class="topic-card"><h4>DevSecOps Principles for Secure Cloud Application Development</h4></div>
-      <div class="topic-card"><h4>Incident Response and Business Continuity in the Cloud</h4></div>
+      <div class="topic-card">
+        <h4>Introduction to Cloud Computing and Security Models (Shared Responsibility) <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Start with the fundamentals of cloud computing (IaaS, PaaS, SaaS) and understand the shared responsibility model for security, clarifying what the cloud provider is responsible for versus what the customer must secure.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Identity and Access Management (IAM) - Users, Roles, Policies <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Deep dive into IAM, a cornerstone of cloud security. Learn how to manage users, groups, roles, and permissions effectively across cloud services to enforce the principle of least privilege and prevent unauthorized access.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Cloud Data Security - Encryption, Key Management, Data Masking <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Explore strategies for protecting data at rest, in transit, and in use within cloud environments. This includes encryption techniques, robust key management practices, and methods like data masking and tokenization.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Cloud Network Security - Virtual Networks, Security Groups, WAFs <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Learn to configure and manage network security constructs in the cloud, such as Virtual Private Clouds (VPCs), security groups, network ACLs, Web Application Firewalls (WAFs), and other virtual networking components.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Infrastructure Security in IaaS, PaaS, and SaaS <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Understand the specific security considerations and best practices for securing infrastructure, platforms, and software services depending on the cloud service model (IaaS, PaaS, SaaS) being utilized.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Security Operations and Monitoring in the Cloud (Logging, Auditing) <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Focus on how to effectively monitor cloud environments for security events, manage logs, conduct audits, and implement automated alerting to detect and respond to threats promptly.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Compliance and Legal Considerations in Cloud Environments <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Navigate the complex landscape of compliance in the cloud, covering major frameworks like GDPR, HIPAA, PCI DSS, and SOC 2. Understand data residency, sovereignty, and legal implications of cloud usage.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>DevSecOps Principles for Secure Cloud Application Development <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Learn how to integrate security into the DevOps lifecycle (DevSecOps) for cloud-native applications. This includes secure coding practices, automated security testing in CI/CD pipelines, and infrastructure-as-code security.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Incident Response and Business Continuity in the Cloud <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Develop strategies for responding to security incidents in cloud environments and ensuring business continuity and disaster recovery (BCDR) through resilient cloud architectures and recovery plans.</p></div>
+      </div>
     </div>
   </div>
 
@@ -148,4 +204,33 @@
     <a href="#" class="btn btn-enroll">Secure Your Cloud Journey</a>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const topicCards = document.querySelectorAll('.topic-card h4');
+
+    topicCards.forEach(cardTitle => {
+        cardTitle.addEventListener('click', function () {
+            const detailContent = this.nextElementSibling;
+            const icon = this.querySelector('.topic-toggle-icon');
+
+            if (detailContent && detailContent.classList.contains('topic-detail-content')) {
+                if (detailContent.style.display === 'block') {
+                    detailContent.style.display = 'none';
+                    if(icon) {
+                        icon.textContent = '+';
+                        icon.classList.remove('expanded');
+                    }
+                } else {
+                    detailContent.style.display = 'block';
+                    if(icon) {
+                        icon.textContent = '-';
+                        icon.classList.add('expanded');
+                    }
+                }
+            }
+        });
+    });
+});
+</script>
 {% endblock %}

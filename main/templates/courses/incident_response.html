@@ -87,6 +87,35 @@
     font-size: 1.15em; /* Slightly larger for emphasis */
     margin-bottom: 0; /* Remove bottom margin if only title */
     line-height: 1.4;
+    display: flex; /* For icon alignment */
+    justify-content: space-between; /* Icon to the right */
+    align-items: center;
+    cursor: pointer; /* Make title clickable */
+  }
+  .topic-toggle-icon {
+    font-size: 0.8em; /* Smaller icon */
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+  }
+  .topic-toggle-icon.expanded {
+    transform: rotate(45deg);
+  }
+  .topic-detail-content {
+    display: none; /* Hidden by default */
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #e9ecef; /* Slightly different background for detail */
+    border-radius: 6px;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #333;
+  }
+  .topic-detail-content p {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  .topic-detail-content p:last-child {
+    margin-bottom: 0;
   }
 </style>
 
@@ -132,16 +161,46 @@
   <div class="course-section key-topics">
     <h2>Key Topics Covered</h2>
     <div class="key-topics-grid">
-      <div class="topic-card"><h4>Introduction to Incident Response and Handling</h4></div>
-      <div class="topic-card"><h4>Developing an Incident Response Plan and Team</h4></div>
-      <div class="topic-card"><h4>Incident Detection, Triage, and Prioritization</h4></div>
-      <div class="topic-card"><h4>Containment, Eradication, and Recovery Strategies</h4></div>
-      <div class="topic-card"><h4>Post-Incident Activities and Lessons Learned</h4></div>
-      <div class="topic-card"><h4>Fundamentals of Digital Forensics and Evidence Handling</h4></div>
-      <div class="topic-card"><h4>Operating System Forensics (Windows, Linux)</h4></div>
-      <div class="topic-card"><h4>Network Forensics and Traffic Analysis</h4></div>
-      <div class="topic-card"><h4>Malware Analysis in Incident Response</h4></div>
-      <div class="topic-card"><h4>Forensic Reporting and Expert Witness Testimony Basics</h4></div>
+      <div class="topic-card">
+        <h4>Introduction to Incident Response and Handling <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Define what constitutes a security incident and understand the importance of a structured incident response process. This module introduces the goals of incident handling and the typical challenges faced by organizations.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Developing an Incident Response Plan and Team <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Learn the critical components of an effective incident response plan (IRP) and how to establish and train an incident response team (IRT). This includes defining roles, responsibilities, communication protocols, and escalation procedures.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Incident Detection, Triage, and Prioritization <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Explore various methods for detecting security incidents, from automated alerts via SIEMs and IDS/IPS to manual reporting. Learn how to triage incidents effectively, assess their impact, and prioritize them for response.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Containment, Eradication, and Recovery Strategies <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Master the core phases of incident handling: strategies for containing the incident to prevent further damage, methods for eradicating the threat from affected systems, and processes for securely recovering systems and data to normal operations.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Post-Incident Activities and Lessons Learned <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Understand the importance of post-incident analysis, including conducting lessons learned reviews, updating the IRP, and implementing improvements to prevent future occurrences. This module also covers reporting requirements.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Fundamentals of Digital Forensics and Evidence Handling <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Introduce the principles of digital forensics, focusing on the proper collection, preservation, and handling of digital evidence to maintain its integrity and admissibility. Learn about the chain of custody and legal considerations.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Operating System Forensics (Windows, Linux) <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Delve into forensic analysis techniques specific to Windows and Linux operating systems. This includes examining file systems, memory dumps, registry hives (Windows), system logs, and user activity to uncover evidence of compromise.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Network Forensics and Traffic Analysis <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Learn how to capture and analyze network traffic (e.g., using Wireshark) to identify malicious communications, reconstruct events, and trace attacker activity across the network. Understand logs from firewalls, proxies, and other network devices.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Malware Analysis in Incident Response <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Gain an introduction to malware analysis techniques used during incident response, including static and dynamic analysis, to understand malware behavior, capabilities, and indicators of compromise (IOCs).</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Forensic Reporting and Expert Witness Testimony Basics <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Learn how to document forensic findings clearly and comprehensively in a forensic report. This module also touches upon the basics of presenting technical evidence and potentially serving as an expert witness.</p></div>
+      </div>
     </div>
   </div>
 
@@ -149,4 +208,33 @@
     <a href="#" class="btn btn-enroll">Master Incident Response</a>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const topicCards = document.querySelectorAll('.topic-card h4');
+
+    topicCards.forEach(cardTitle => {
+        cardTitle.addEventListener('click', function () {
+            const detailContent = this.nextElementSibling;
+            const icon = this.querySelector('.topic-toggle-icon');
+
+            if (detailContent && detailContent.classList.contains('topic-detail-content')) {
+                if (detailContent.style.display === 'block') {
+                    detailContent.style.display = 'none';
+                    if(icon) {
+                        icon.textContent = '+';
+                        icon.classList.remove('expanded');
+                    }
+                } else {
+                    detailContent.style.display = 'block';
+                    if(icon) {
+                        icon.textContent = '-';
+                        icon.classList.add('expanded');
+                    }
+                }
+            }
+        });
+    });
+});
+</script>
 {% endblock %}

@@ -87,6 +87,35 @@
     font-size: 1.15em; /* Slightly larger for emphasis */
     margin-bottom: 0; /* Remove bottom margin if only title */
     line-height: 1.4;
+    display: flex; /* For icon alignment */
+    justify-content: space-between; /* Icon to the right */
+    align-items: center;
+    cursor: pointer; /* Make title clickable */
+  }
+  .topic-toggle-icon {
+    font-size: 0.8em; /* Smaller icon */
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+  }
+  .topic-toggle-icon.expanded {
+    transform: rotate(45deg);
+  }
+  .topic-detail-content {
+    display: none; /* Hidden by default */
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #e9ecef; /* Slightly different background for detail */
+    border-radius: 6px;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #333;
+  }
+  .topic-detail-content p {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  .topic-detail-content p:last-child {
+    margin-bottom: 0;
   }
 </style>
 
@@ -132,16 +161,46 @@
   <div class="course-section key-topics">
     <h2>Key Topics Covered</h2>
     <div class="key-topics-grid">
-      <div class="topic-card"><h4>Introduction to Ethical Hacking and Legal Frameworks</h4></div>
-      <div class="topic-card"><h4>Footprinting, Reconnaissance, and Information Gathering</h4></div>
-      <div class="topic-card"><h4>Scanning Networks and Enumeration Techniques</h4></div>
-      <div class="topic-card"><h4>Vulnerability Analysis and Assessment</h4></div>
-      <div class="topic-card"><h4>System Hacking (Malware, Password Attacks, Privilege Escalation)</h4></div>
-      <div class="topic-card"><h4>Web Application Hacking (SQL Injection, XSS, CSRF)</h4></div>
-      <div class="topic-card"><h4>Wireless Network Penetration Testing</h4></div>
-      <div class="topic-card"><h4>Social Engineering Tactics and Countermeasures</h4></div>
-      <div class="topic-card"><h4>Evading IDS, Firewalls, and Honeypots</h4></div>
-      <div class="topic-card"><h4>Reporting and Post-Engagement Activities</h4></div>
+      <div class="topic-card">
+        <h4>Introduction to Ethical Hacking and Legal Frameworks <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Begin by understanding the core principles of ethical hacking, its importance in a defensive security strategy, and the critical legal and ethical considerations that every penetration tester must adhere to. This module sets the stage for responsible and effective security testing.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Footprinting, Reconnaissance, and Information Gathering <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Learn various active and passive reconnaissance techniques to gather crucial information about target systems and organizations. This foundational phase is key to identifying potential attack vectors and understanding the target's digital footprint.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Scanning Networks and Enumeration Techniques <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Master the use of network scanning tools like Nmap to discover live hosts, open ports, and running services. Following scanning, delve into enumeration techniques to extract detailed information such as user accounts, network shares, and system configurations.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Vulnerability Analysis and Assessment <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>This module focuses on identifying and assessing vulnerabilities in systems and applications. You'll learn to use vulnerability scanning tools, interpret their results, and understand how to prioritize findings based on risk and exploitability.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>System Hacking (Malware, Password Attacks, Privilege Escalation) <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Explore common system hacking methodologies, including understanding malware types, various password cracking techniques (brute-force, dictionary attacks), and methods for escalating privileges on compromised systems to gain further access.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Web Application Hacking (SQL Injection, XSS, CSRF) <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Dive into the most common web application vulnerabilities such as SQL Injection, Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), and others. Learn how to identify and exploit these flaws in a controlled environment.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Wireless Network Penetration Testing <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Focus on the specific techniques used to assess and compromise wireless networks. This includes understanding Wi-Fi protocols, cracking WEP/WPA/WPA2 keys, and identifying rogue access points and other wireless threats.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Social Engineering Tactics and Countermeasures <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Understand the psychology behind social engineering attacks and learn about various tactics used by attackers, such as phishing, pretexting, and baiting. This module also covers countermeasures and awareness training.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Evading IDS, Firewalls, and Honeypots <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Learn advanced techniques for bypassing security defenses like Intrusion Detection Systems (IDS), firewalls, and honeypots. This includes understanding fragmentation, obfuscation, and other methods to make attacks stealthier.</p></div>
+      </div>
+      <div class="topic-card">
+        <h4>Reporting and Post-Engagement Activities <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content"><p>Conclude with the critical skill of documenting and presenting penetration testing findings. Learn how to write professional reports that clearly communicate vulnerabilities, risks, and actionable remediation recommendations to stakeholders.</p></div>
+      </div>
     </div>
   </div>
 
@@ -149,4 +208,33 @@
     <a href="#" class="btn btn-enroll">Start Hacking Ethically</a>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const topicCards = document.querySelectorAll('.topic-card h4');
+
+    topicCards.forEach(cardTitle => {
+        cardTitle.addEventListener('click', function () {
+            const detailContent = this.nextElementSibling;
+            const icon = this.querySelector('.topic-toggle-icon');
+
+            if (detailContent && detailContent.classList.contains('topic-detail-content')) {
+                if (detailContent.style.display === 'block') {
+                    detailContent.style.display = 'none';
+                    if(icon) {
+                        icon.textContent = '+';
+                        icon.classList.remove('expanded');
+                    }
+                } else {
+                    detailContent.style.display = 'block';
+                    if(icon) {
+                        icon.textContent = '-';
+                        icon.classList.add('expanded');
+                    }
+                }
+            }
+        });
+    });
+});
+</script>
 {% endblock %}
