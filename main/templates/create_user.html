@@ -1,15 +1,184 @@
 {% extends 'base.html' %}
 
-{% block title %}Create New User{% endblock %}
+{% block title %}Create New User - CyberGuard Training{% endblock %}
 
 {% block content %}
-<h2>Create New User</h2>
+<style>
+  /* Adapted from register.html styles for consistency */
+  body {
+    font-family: 'Arial', sans-serif; /* Fallback if base.html doesn't set it */
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top for potentially longer forms */
+    min-height: 90vh;
+    margin: 0;
+    padding: 40px 20px; /* Padding for the overall page */
+  }
+  .container-auth { /* Renamed from .auth-page-wrapper for clarity */
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 600px; /* Wider for potentially more fields in admin forms */
+    text-align: center;
+  }
+  .container-auth h2 {
+    color: #003366;
+    margin-bottom: 25px;
+    font-size: 2em;
+  }
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+  }
+  /* Styling for Django form widgets if they don't have Bootstrap classes */
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="password"],
+  .form-group input[type="url"],
+  .form-group input[type="number"],
+  .form-group input[type="date"],
+  .form-group input[type="datetime-local"],
+  .form-group input[type="month"],
+  .form-group input[type="search"],
+  .form-group input[type="tel"],
+  .form-group input[type="time"],
+  .form-group input[type="week"],
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .form-group input:focus, /* General focus for any input */
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #00509e;
+    box-shadow: 0 0 0 2px rgba(0, 80, 158, 0.2);
+  }
+  .form-group select[multiple] {
+      height: auto; /* Ensure multi-selects are not squashed */
+  }
+  .form-group .helptext,
+  .form-group .form-text.text-muted { /* Django help_text often renders as .helptext or we add .form-text.text-muted */
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85em;
+    color: #6c757d;
+  }
+  .errorlist { /* For non_field_errors and field.errors if not styled per field */
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+    color: #d9534f;
+    font-size: 0.9em;
+    text-align: left;
+  }
+  .errorlist li {
+    margin-bottom: 5px;
+    padding: 8px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+  }
+  .form-group .errorlist { /* Errors specific to a field */
+      margin-top: 5px; /* Space between input and its error */
+      margin-bottom: 0;
+  }
+  .form-group .errorlist li {
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      color: #d9534f;
+  }
 
-<form method="post">
+  .btn-submit, .btn-primary-custom { /* For primary action */
+    background: #ff6600;
+    color: #fff !important;
+    padding: 12px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+    display: block; /* Ensure it takes full width if not already */
+  }
+  .btn-submit:hover, .btn-primary-custom:hover {
+    background: #cc5200;
+  }
+  .btn-back-link, .btn-secondary-custom { /* For secondary action */
+    display: inline-block; /* Or block if full width desired */
+    margin-top: 15px;
+    color: #00509e;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 8px 15px;
+    border: 1px solid #00509e;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .btn-back-link:hover, .btn-secondary-custom:hover {
+    background-color: #00509e;
+    color: #fff;
+    text-decoration: none;
+  }
+  .form-actions { /* Optional wrapper for buttons */
+      margin-top: 25px;
+  }
+</style>
+
+<div class="container-auth">
+  <h2>Create New User</h2>
+  <form method="post" novalidate>
     {% csrf_token %}
-    {{ form.as_p }}
 
-    <button type="submit" class="btn btn-success">Create User</button>
-    <a href="{% url 'manage_users' %}" class="btn btn-secondary">Back to Manage Users</a>
-</form>
+    {% if form.non_field_errors %}
+      <ul class="errorlist">
+        {% for error in form.non_field_errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% for field in form %}
+      <div class="form-group">
+        {{ field.label_tag }}
+        {{ field }} {# This renders the widget #}
+        {% if field.help_text %}
+          <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+        {% if field.errors %}
+          <ul class="errorlist">
+            {% for error in field.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <div class="form-actions">
+        <button type="submit" class="btn-submit">Create User</button>
+        <a href="{% url 'manage_users' %}" class="btn-back-link" style="margin-top: 20px; display: block; text-align:center;">Back to Manage Users</a>
+    </div>
+  </form>
+</div>
 {% endblock %}
