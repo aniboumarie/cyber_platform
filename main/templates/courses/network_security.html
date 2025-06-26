@@ -87,7 +87,37 @@
     font-size: 1.15em; /* Slightly larger for emphasis */
     margin-bottom: 0; /* Remove bottom margin if only title */
     line-height: 1.4;
+    display: flex; /* For icon alignment */
+    justify-content: space-between; /* Icon to the right */
+    align-items: center;
+    cursor: pointer; /* Make title clickable */
   }
+  .topic-toggle-icon {
+    font-size: 0.8em; /* Smaller icon */
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+  }
+  .topic-toggle-icon.expanded {
+    transform: rotate(45deg); /* "X" like close icon or rotated plus */
+  }
+  .topic-detail-content {
+    display: none; /* Hidden by default */
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #e9ecef; /* Slightly different background for detail */
+    border-radius: 6px;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #333;
+  }
+  .topic-detail-content p {
+    margin-bottom: 10px;
+    color: #333; /* Ensure p inside this div also gets this color */
+  }
+  .topic-detail-content p:last-child {
+    margin-bottom: 0;
+  }
+
   /* If you add icons or short descriptions later, adjust h4 margin and add styles for them */
 
 </style>
@@ -133,15 +163,70 @@
   <div class="course-section key-topics">
     <h2>Key Topics Covered</h2>
     <div class="key-topics-grid">
-      <div class="topic-card"><h4>Introduction to Network Security & Cyber Threats</h4></div>
-      <div class="topic-card"><h4>Essential Networking Protocols and Associated Vulnerabilities</h4></div>
-      <div class="topic-card"><h4>Firewall Technologies and Network Segmentation Strategies</h4></div>
-      <div class="topic-card"><h4>Intrusion Detection and Prevention Systems (IDS/IPS)</h4></div>
-      <div class="topic-card"><h4>Virtual Private Networks (VPNs) and Remote Access Security</h4></div>
-      <div class="topic-card"><h4>Wireless Network Security (WPA2/3, common attacks, best practices)</h4></div>
-      <div class="topic-card"><h4>Network Monitoring, Logging, and Traffic Analysis</h4></div>
-      <div class="topic-card"><h4>Fundamentals of Cryptography in Network Security</h4></div>
-      <div class="topic-card"><h4>Secure Network Architecture and Design Principles</h4></div>
+
+      <div class="topic-card">
+        <h4>Introduction to Network Security & Cyber Threats <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content">
+          <p>This module lays the groundwork by defining core cybersecurity principles, the significance of network security in today's interconnected world, and the CIA triad (Confidentiality, Integrity, Availability). We will explore the evolving landscape of cyber threats, including common attack vectors like malware, phishing, DoS/DDoS attacks, and social engineering, providing a foundational understanding of what we are defending against.</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h4>Essential Networking Protocols and Associated Vulnerabilities <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content">
+          <p>Gain an in-depth understanding of fundamental networking protocols such as TCP/IP, HTTP/S, DNS, and SMTP. This section will critically examine how these protocols function and, more importantly, explore their inherent vulnerabilities that attackers often exploit. We'll discuss common misconfigurations and weaknesses associated with these essential communication building blocks.</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h4>Firewall Technologies and Network Segmentation Strategies <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content">
+          <p>Discover the crucial role of firewalls as a primary line of defense. We'll cover various firewall types (packet filtering, stateful inspection, proxy, next-generation firewalls) and their operational mechanisms. A significant focus will be on network segmentation strategies, including DMZs and VLANs, to isolate critical assets and limit the blast radius of potential security breaches.</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h4>Intrusion Detection and Prevention Systems (IDS/IPS) <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content">
+          <p>Learn how IDS and IPS technologies help in identifying and mitigating malicious activities in real-time. This module explains the differences between detection and prevention, various detection methodologies (signature-based, anomaly-based), and best practices for deploying and tuning these systems for optimal performance and minimal false positives.</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h4>Virtual Private Networks (VPNs) and Remote Access Security <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content">
+          <p>Explore the mechanisms behind VPNs, including tunneling protocols (like IPsec and SSL/TLS), encryption, and authentication methods that ensure secure communication over untrusted networks. We will also cover best practices for securing remote access for employees and third parties, addressing the challenges of a distributed workforce.</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h4>Wireless Network Security (WPA2/3, common attacks, best practices) <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content">
+          <p>This section focuses on securing wireless networks, a common entry point for attackers. We will discuss Wi-Fi security protocols like WPA2 and WPA3, common wireless attacks (e.g., evil twin, deauthentication attacks), and comprehensive strategies for designing and maintaining secure wireless infrastructures.</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h4>Network Monitoring, Logging, and Traffic Analysis <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content">
+          <p>Understand the importance of continuous network monitoring and robust logging for early threat detection and incident response. This module introduces tools and techniques for network traffic analysis, log management, and establishing baselines to identify anomalous behavior that could indicate a compromise.</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h4>Fundamentals of Cryptography in Network Security <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content">
+          <p>Delve into the basic principles of cryptography and its application in network security. Topics include symmetric and asymmetric encryption, hashing algorithms, digital signatures, and public key infrastructure (PKI). Understanding these concepts is vital for appreciating how data is protected in transit and at rest.</p>
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <h4>Secure Network Architecture and Design Principles <span class="topic-toggle-icon">+</span></h4>
+        <div class="topic-detail-content">
+          <p>Conclude by learning how to integrate all previously discussed concepts into a cohesive, secure network architecture. This module emphasizes defense-in-depth strategies, secure design principles (e.g., least privilege, attack surface reduction), and considerations for scalability and future threats when designing or overhauling network infrastructures.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -149,4 +234,33 @@
     <a href="#" class="btn btn-enroll">Start Learning Now</a>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const topicCards = document.querySelectorAll('.topic-card h4');
+
+    topicCards.forEach(cardTitle => {
+        cardTitle.addEventListener('click', function () {
+            const detailContent = this.nextElementSibling; // Assumes detail-content is the direct next sibling
+            const icon = this.querySelector('.topic-toggle-icon');
+
+            if (detailContent && detailContent.classList.contains('topic-detail-content')) {
+                if (detailContent.style.display === 'block') {
+                    detailContent.style.display = 'none';
+                    if(icon) {
+                        icon.textContent = '+';
+                        icon.classList.remove('expanded');
+                    }
+                } else {
+                    detailContent.style.display = 'block';
+                    if(icon) {
+                        icon.textContent = '-'; // Or use a different character/class for "minus"
+                        icon.classList.add('expanded');
+                    }
+                }
+            }
+        });
+    });
+});
+</script>
 {% endblock %}
