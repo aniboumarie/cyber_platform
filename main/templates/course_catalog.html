@@ -18,7 +18,8 @@
         <h3>{{ course.title }}</h3>
         <p class="summary">{{ course.summary }}</p>
       </div>
-      <a href="{% url course.detail_url_name %}" class="btn btn-view-details">View Details</a>
+      {# The URL 'course_detail_by_slug' will be defined in a subsequent step #}
+      <a href="{% if course.slug %}{% url 'course_detail_by_slug' course.slug %}{% else %}#{% endif %}" class="btn btn-view-details">View Details</a>
     </div>
     {% endfor %}
   </div>
