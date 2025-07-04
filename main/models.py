@@ -16,6 +16,7 @@ class Course(models.Model):
         limit_choices_to={'groups__name': 'Trainer'},
         help_text="Trainer for this course"
     )
+    key_topics = models.TextField(blank=True, null=True, help_text="List key topics, ideally one per line for simple display.")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
