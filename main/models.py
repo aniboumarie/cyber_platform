@@ -28,11 +28,11 @@ class Course(models.Model):
         super().save(*args, **kwargs)
 
 class Lesson(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='lessons')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='lessons', null=True, blank=True)
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=220, blank=True, help_text="URL-friendly version of the title. Leave blank to auto-generate.")
     content = models.TextField(help_text="Content of the lesson (can be Markdown or HTML)")
-    order = models.PositiveIntegerField(help_text="Order of the lesson within the course")
+    order = models.PositiveIntegerField(null=True, blank=True, help_text="Order of the lesson within the course")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

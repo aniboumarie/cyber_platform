@@ -83,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'cybersecurity_db',
-        'USER': 'cyber_user',
-        'PASSWORD': 'Cyber@1234',  # must match exactly what you set in pgAdmin
+        'USER': 'postgres',
+        'PASSWORD': '00000',  # must match exactly what you set in pgAdmin
         'HOST': 'localhost',
         'PORT': '5432',
         'OPTIONS': {
