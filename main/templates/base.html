@@ -21,37 +21,48 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0"> {/* Standard Bootstrap nav structure */}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if request.resolver_match.url_name == 'course_catalog' or request.resolver_match.url_name == 'course_detail_by_slug' %}active{% endif %}" href="{% url 'course_catalog' %}">Courses</a>
+        </li>
         {% if user.is_authenticated %}
-          {% if user.groups.all.0.name == "Admin" %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'manage_users' %}">Manage Users</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'create_user' %}">Create User</a></li>
-          {% elif user.groups.all.0.name == "Trainer" %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'trainer_dashboard' %}">Trainer Dashboard</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'add_lesson' %}">Add Lesson</a></li>
-          {% elif user.groups.all.0.name == "Trainee" %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'trainee_dashboard' %}">Trainee Dashboard</a></li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.resolver_match.url_name == 'dashboard' or 'admin_dashboard' in request.resolver_match.url_name or 'trainer_dashboard' in request.resolver_match.url_name or 'trainee_dashboard' in request.resolver_match.url_name %}active{% endif %}" href="{% url 'dashboard' %}">Dashboard</a>
+          </li>
+          {# Role-specific links - kept similar to original logic for now, can be refined #}
+          {% if user.groups.exists %}
+            {% with user_group_name=user.groups.all.0.name %}
+              {% if user_group_name == "Admin" %}
+                <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'manage_users' %}active{% endif %}" href="{% url 'manage_users' %}">Manage Users</a></li>
+                <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'create_user' %}active{% endif %}" href="{% url 'create_user' %}">Create User</a></li>
+              {% elif user_group_name == "Trainer" %}
+                <li class="nav-item"><a class="nav-link {% if request.resolver_match.url_name == 'add_lesson' %}active{% endif %}" href="{% url 'add_lesson' %}">Add Lesson</a></li>
+              {% endif %}
+            {% endwith %}
           {% endif %}
         {% endif %}
       </ul>
       <ul class="navbar-nav ms-auto">
         {% if user.is_authenticated %}
-          <li class="nav-item">
-            <span class="navbar-text me-3">Hi, {{ user.username }}!</span>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link btn-logout" href="{% url 'logout' %}">Logout</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUserLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hi, {{ user.username }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownUserLink">
+              <li><a class="dropdown-item" href="{% url 'dashboard' %}">My Dashboard</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item btn-logout" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
           </li>
         {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Home</a>
+            <a class="nav-link {% if request.resolver_match.url_name == 'login' %}active{% endif %}" href="{% url 'login' %}">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
+            <a class="nav-link btn btn-primary btn-sm {% if request.resolver_match.url_name == 'signup' %}active{% endif %}" href="{% url 'signup' %}">Sign Up</a>
           </li>
         {% endif %}
       </ul>

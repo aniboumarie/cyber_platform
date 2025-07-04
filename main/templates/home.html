@@ -1,87 +1,152 @@
 {% extends 'base.html' %}
+{% load static %}
 
-{% block title %}Cybersecurity Training Platform{% endblock %}
+{% block title %}Cybersecurity Training Platform - Empower Your Defenses{% endblock %}
 
 {% block content %}
-{# Styles moved to main/static/main/css/style.css #}
-
-<div class="hero">
+{# Hero Section #}
+<header class="hero bg-light text-dark py-5 text-center">
   <div class="container">
-    <h1>Empower Your Cyber Defenses</h1>
-    <p>Master critical cybersecurity skills with our expert-led courses and hands-on labs. <br>Stay ahead of threats and advance your career.</p>
-    <a href="{% url 'signup' %}" class="btn">Get Started Now</a>
-    <a href="#courses" class="btn btn-secondary">Explore Courses</a>
+    <h1 class="display-4 fw-bold">Empower Your Cyber Defenses</h1>
+    <p class="lead col-lg-8 mx-auto">Master critical cybersecurity skills with our expert-led courses and hands-on labs. Stay ahead of threats and advance your career in a vital and growing field.</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
+      <a href="{% url 'signup' %}" class="btn btn-primary btn-lg px-4 gap-3">Get Started Now</a>
+      <a href="#courses" class="btn btn-outline-secondary btn-lg px-4">Explore Courses</a>
+    </div>
   </div>
-</div>
+</header>
 
-<section id="courses" class="section">
+{# Courses Section #}
+<section id="courses" class="py-5">
   <div class="container">
-    <h2>Explore Our Courses</h2>
-    <div class="courses-grid">
-      <div class="course-item">
-        <h3>Network Security Fundamentals</h3>
-        <p>Learn to design, implement, and manage secure network infrastructures. Understand firewalls, IDS/IPS, and VPNs.</p>
-        <a href="{% url 'course_detail_by_slug' slug='network-security' %}" class="btn btn-small">Learn More</a>
+    <h2 class="text-center mb-5 display-5">Explore Our Courses</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      {# Course Item 1 #}
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          {# Consider adding a placeholder image or icon here if available #}
+          {# <img src="{% static 'main/images/network-security-icon.png' %}" class="card-img-top" alt="Network Security"> #}
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title h5">Network Security Fundamentals</h3>
+            <p class="card-text flex-grow-1">Learn to design, implement, and manage secure network infrastructures. Understand firewalls, IDS/IPS, and VPNs.</p>
+            <a href="{% url 'course_detail_by_slug' slug='network-security' %}" class="btn btn-sm btn-outline-primary mt-auto">Learn More</a>
+          </div>
+        </div>
       </div>
-      <div class="course-item">
-        <h3>Ethical Hacking & Penetration Testing</h3>
-        <p>Discover vulnerabilities and secure systems by thinking like an attacker. Covers tools and techniques for ethical hacking.</p>
-        <a href="{% url 'course_detail_by_slug' slug='ethical-hacking' %}" class="btn btn-small">Learn More</a>
+      {# Course Item 2 #}
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title h5">Ethical Hacking & Penetration Testing</h3>
+            <p class="card-text flex-grow-1">Discover vulnerabilities and secure systems by thinking like an attacker. Covers tools and techniques for ethical hacking.</p>
+            <a href="{% url 'course_detail_by_slug' slug='ethical-hacking' %}" class="btn btn-sm btn-outline-primary mt-auto">Learn More</a>
+          </div>
+        </div>
       </div>
-      <div class="course-item">
-        <h3>Cloud Security Essentials</h3>
-        <p>Secure cloud environments (AWS, Azure, GCP). Learn about identity management, data protection, and compliance.</p>
-        <a href="{% url 'course_detail_by_slug' slug='cloud-security' %}" class="btn btn-small">Learn More</a>
+      {# Course Item 3 #}
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title h5">Cloud Security Essentials</h3>
+            <p class="card-text flex-grow-1">Secure cloud environments (AWS, Azure, GCP). Learn about identity management, data protection, and compliance.</p>
+            <a href="{% url 'course_detail_by_slug' slug='cloud-security' %}" class="btn btn-sm btn-outline-primary mt-auto">Learn More</a>
+          </div>
+        </div>
       </div>
-      <div class="course-item">
-        <h3>Incident Response & Forensics</h3>
-        <p>Develop skills to effectively respond to security breaches and conduct digital forensic investigations.</p>
-        <a href="{% url 'course_detail_by_slug' slug='incident-response' %}" class="btn btn-small">Learn More</a>
+      {# Course Item 4 #}
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title h5">Incident Response & Forensics</h3>
+            <p class="card-text flex-grow-1">Develop skills to effectively respond to security breaches and conduct digital forensic investigations.</p>
+            <a href="{% url 'course_detail_by_slug' slug='incident-response' %}" class="btn btn-sm btn-outline-primary mt-auto">Learn More</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="why-choose-us" class="section section-dark">
+{# Why Choose Us Section #}
+<section id="why-choose-us" class="py-5 bg-dark text-light">
   <div class="container">
-    <h2>Why Choose Our Platform?</h2>
-    <div class="features-grid">
-      <div class="feature-item">
-        <h3>Expert-Led Training</h3>
-        <p>Learn from industry veterans with real-world experience in cybersecurity.</p>
+    <h2 class="text-center mb-5 display-5">Why Choose Our Platform?</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-item text-center p-3">
+          {# Placeholder for icon, e.g., <i class="bi bi-person-video3 fs-1 text-primary mb-3"></i> #}
+          <h3 class="h5">Expert-Led Training</h3>
+          <p>Learn from industry veterans with real-world experience in cybersecurity.</p>
+        </div>
       </div>
-      <div class="feature-item">
-        <h3>Hands-On Labs</h3>
-        <p>Apply your knowledge in realistic virtual environments and practical exercises.</p>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-item text-center p-3">
+          <h3 class="h5">Hands-On Labs</h3>
+          <p>Apply your knowledge in realistic virtual environments and practical exercises.</p>
+        </div>
       </div>
-      <div class="feature-item">
-        <h3>Comprehensive Curriculum</h3>
-        <p>Our courses cover the latest threats, tools, and best practices in the industry.</p>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-item text-center p-3">
+          <h3 class="h5">Comprehensive Curriculum</h3>
+          <p>Our courses cover the latest threats, tools, and best practices in the industry.</p>
+        </div>
       </div>
-      <div class="feature-item">
-        <h3>Career Advancement</h3>
-        <p>Gain skills that are highly sought after and prepare for industry certifications.</p>
+      <div class="col-md-6 col-lg-3">
+        <div class="feature-item text-center p-3">
+          <h3 class="h5">Career Advancement</h3>
+          <p>Gain skills that are highly sought after and prepare for industry certifications.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta-section">
+{# Testimonials Section (New - Placeholder) #}
+<section id="testimonials" class="py-5 bg-light">
   <div class="container">
-    <h2>Ready to Start Your Cybersecurity Journey?</h2>
-    <p>Join thousands of learners and take the next step in your career.</p>
-    <a href="{% url 'signup' %}" class="btn">Register Now</a>
-    <a href="{% url 'course_catalog' %}" class="btn btn-secondary">View Course Catalog</a>
+    <h2 class="text-center mb-5 display-5">What Our Learners Say</h2>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text fst-italic">"This platform transformed my understanding of cybersecurity. The hands-on labs are incredible!"</p>
+            <p class="card-text text-end fw-bold">- Alex P.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text fst-italic">"The instructors are top-notch and the course content is always up-to-date."</p>
+            <p class="card-text text-end fw-bold">- Jamie L.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <p class="card-text fst-italic">"I landed a new job thanks to the skills I gained here. Highly recommended!"</p>
+            <p class="card-text text-end fw-bold">- Sam K.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<footer>
-  <div class="container">
-    <p>&copy; {% now "Y" %} Cybersecurity Training Platform. All Rights Reserved.</p>
-    <p>
-        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
-    </p>
+{# CTA Section #}
+<section class="cta-section py-5">
+  <div class="container text-center">
+    <h2 class="display-5">Ready to Start Your Cybersecurity Journey?</h2>
+    <p class="lead col-lg-8 mx-auto">Join thousands of learners and take the next step in your career.</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
+      <a href="{% url 'signup' %}" class="btn btn-primary btn-lg px-4 gap-3">Register Now</a>
+      <a href="{% url 'course_catalog' %}" class="btn btn-outline-secondary btn-lg px-4">View Course Catalog</a>
+    </div>
   </div>
-</footer>
+</section>
+
+{# Footer is in base.html, but if you want a specific home-page footer, it could be here #}
+{# For this redesign, we'll assume the footer in base.html is sufficient #}
 
 {% endblock %}
