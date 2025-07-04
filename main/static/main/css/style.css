@@ -606,6 +606,61 @@ footer a:hover {
     margin-bottom: 0;
 }
 
+/* Styles for simple text display of key topics */
+.key-topics-display .key-topics-text-content {
+    background-color: #F5F7FA; /* Light background, similar to topic cards */
+    padding: 16px;
+    border-radius: 6px;
+    border: 1px solid #E0E0E0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #333;
+}
+
+/* Styles for lessons list */
+.lessons-list ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.lessons-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #E0E0E0;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+}
+.lessons-list li:last-child {
+    border-bottom: none;
+}
+.lessons-list li a {
+    text-decoration: none;
+    color: #1976D2; /* Secondary Blue */
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+.lessons-list li a:hover {
+    color: #0D47A1; /* Primary Blue */
+    text-decoration: underline;
+}
+
+.instructor-info {
+    margin-top: 32px;
+    padding: 24px;
+    background-color: #e9f5ff; /* A very light, distinct blue */
+    border-left: 4px solid #1976D2; /* Secondary blue accent */
+    border-radius: 4px;
+}
+.instructor-info h2 { /* Already styled globally, but ensure margin is good */
+    margin-bottom: 12px;
+}
+.instructor-info p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #212121;
+    margin-bottom: 0;
+}
+
+
 /* 9. Utility Classes */
 .w-100 {
     width: 100% !important;
