@@ -30,6 +30,6 @@ urlpatterns = [
     # path('courses/incident-response/', views.incident_response_view, name='course_incident_response'),
 
     path('courses/', views.course_catalog_view, name='course_catalog'),
-    path('course/<slug:slug>/', views.course_detail_view, name='course_detail'), # This line is already present and correct
+    path('course/<slug:slug>/', views.course_detail_view, name='course_detail_by_slug'), # Dynamic course detail
 ]
 

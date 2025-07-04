@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ course.title }} - Course Details{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'course_catalog' %}">Courses</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{ course.title }}</li>
+    </ol>
+  </nav>
+
+  <div class="course-detail-header">
+    <h1>{{ course.title }}</h1>
+    {% if course.instructor %}
+      <p class="lead">Instructor: {{ course.instructor.get_full_name|default:course.instructor.username }}</p>
+    {% endif %}
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-8">
+      <h2>Course Description</h2>
+      <p>{{ course.description|linebreaksbr }}</p>
+
+      {% if course.key_topics %}
+      <h2>Key Topics</h2>
+      <ul>
+        {% for topic in course.key_topics.splitlines %}
+          {% if topic|trim %}
+            <li>{{ topic|trim }}</li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+
+    <div class="col-md-4">
+      {% if lessons %}
+      <div class="card">
+        <div class="card-header">
+          <h3>Lessons in this Course</h3>
+        </div>
+        <ul class="list-group list-group-flush">
+          {% for lesson in lessons %}
+            <li class="list-group-item">
+              {{ lesson.title }}
+              {# Future enhancement: <a href="{% url 'lesson_detail' course.slug lesson.slug %}">{{ lesson.title }}</a> #}
+            </li>
+          {% empty %}
+            <li class="list-group-item">No lessons available for this course yet.</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% else %}
+        <p>No lessons available for this course yet.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <a href="{% url 'course_catalog' %}" class="btn btn-secondary">Back to Course Catalog</a>
+    {# Add enrollment button or other CTAs here if applicable #}
+  </div>
+
+</div>
+
+<style>
+  .course-detail-header {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 2rem;
+  }
+  .mt-4 {
+    margin-top: 1.5rem !important;
+  }
+  .lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+  }
+</style>
+{% endblock %}
