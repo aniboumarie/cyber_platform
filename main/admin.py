@@ -3,9 +3,22 @@ from .models import Course, Lesson, Enrollment, Quiz # Added Quiz for completene
 
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('title', 'instructor', 'created_at', 'updated_at')
-    search_fields = ('title', 'description', 'instructor__username')
+    search_fields = ('title', 'description', 'summary', 'instructor__username')
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('instructor', 'created_at')
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'slug', 'instructor')
+        }),
+        ('Course Content', {
+            'fields': ('summary', 'description', 'key_topics')
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',) # Collapsible section for less frequently edited fields
+        }),
+    )
+    readonly_fields = ('created_at', 'updated_at') # Make timestamps read-only
 
 class LessonAdmin(admin.ModelAdmin):
     list_display = ('title', 'course', 'order', 'updated_at')

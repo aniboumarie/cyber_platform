@@ -182,20 +182,30 @@ def some_view(request):
     messages.success(request, "User role updated successfully!")
     return redirect('some-page')  # or render(...)
 
-# Course Detail Page Views
-def network_security_view(request):
-    return render(request, 'courses/network_security.html')
-
-def ethical_hacking_view(request):
-    return render(request, 'courses/ethical_hacking.html')
-
-def cloud_security_view(request):
-    return render(request, 'courses/cloud_security.html')
+# Old Static Course Detail Page Views (to be removed)
+# def network_security_view(request):
+#     return render(request, 'courses/network_security.html')
+#
+# def ethical_hacking_view(request):
+#     return render(request, 'courses/ethical_hacking.html')
+#
+# def cloud_security_view(request):
+#     return render(request, 'courses/cloud_security.html')
+#
+# def incident_response_view(request):
+#     return render(request, 'courses/incident_response.html')
 
 from .models import Course # Import the Course model
+from django.shortcuts import get_object_or_404 # Import get_object_or_404
 
-def incident_response_view(request):
-    return render(request, 'courses/incident_response.html')
+def course_detail_view(request, slug): # Dynamic course detail view
+    course = get_object_or_404(Course, slug=slug)
+    lessons = course.lessons.all().order_by('order') # Assuming related_name='lessons' on Lesson.course ForeignKey
+    context = {
+        'course': course,
+        'lessons': lessons
+    }
+    return render(request, 'main/course_detail_page.html', context) # Path to new template
 
 def course_catalog_view(request):
     courses = Course.objects.all().order_by('title') # Fetch courses from DB

@@ -23,11 +23,13 @@ urlpatterns = [
     path('manage-users/', views.manage_users, name='manage_users'), # Added views. prefix
     path('create-user/', views.create_user, name='create_user'), # Added views. prefix
 
-    # Course Detail Pages - these already use views. prefix, which is now correct
-    path('courses/network-security/', views.network_security_view, name='course_network_security'),
-    path('courses/ethical-hacking/', views.ethical_hacking_view, name='course_ethical_hacking'),
-    path('courses/cloud-security/', views.cloud_security_view, name='course_cloud_security'),
-    path('courses/incident-response/', views.incident_response_view, name='course_incident_response'),
-    path('courses/', views.course_catalog_view, name='course_catalog'), # New Catalog URL
+    # Static Course Detail Pages (to be removed)
+    # path('courses/network-security/', views.network_security_view, name='course_network_security'),
+    # path('courses/ethical-hacking/', views.ethical_hacking_view, name='course_ethical_hacking'),
+    # path('courses/cloud-security/', views.cloud_security_view, name='course_cloud_security'),
+    # path('courses/incident-response/', views.incident_response_view, name='course_incident_response'),
+
+    path('courses/', views.course_catalog_view, name='course_catalog'),
+    path('course/<slug:slug>/', views.course_detail_view, name='course_detail_by_slug'), # Dynamic course detail
 ]
 
